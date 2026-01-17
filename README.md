@@ -35,6 +35,7 @@ This repository contains the official AdonisJS starter kits, each tailored for d
 |-------------|-------------|----------|
 | [**Hypermedia**](./hypermedia) | Server-rendered applications with Edge.js templates and Alpine.js | Traditional web apps, admin panels, content sites |
 | [**Inertia React**](./inertia-react) | Single-page applications with React and Inertia.js | Modern SPAs with React ecosystem |
+| [**Inertia Vue**](./inertia-vue) | Single-page applications with Vue and Inertia.js | Modern SPAs with Vue ecosystem |
 
 ---
 
@@ -70,6 +71,22 @@ During setup, select `react` as your frontend adapter.
 
 ---
 
+### Inertia Vue Starter Kit
+
+Build modern single-page applications with Vue while keeping the simplicity of server-side routing.
+
+```bash
+npm init adonisjs@latest -- -K=inertia
+```
+
+During setup, select `vue` as your frontend adapter.
+
+**Includes:** Vue 3, Inertia.js, Tuyau (type-safe routing), Vue Sonner (toast notifications)
+
+[Learn more about Inertia Vue →](./inertia-vue)
+
+---
+
 ## 🎯 Choosing a Starter Kit
 
 ### Choose Hypermedia if you want:
@@ -84,6 +101,13 @@ During setup, select `react` as your frontend adapter.
 - Rich client-side interactivity with React
 - SPA-like navigation without the API complexity
 - Access to the React ecosystem (hooks, libraries, components)
+- End-to-end type safety with Tuyau
+
+### Choose Inertia Vue if you want:
+
+- Rich client-side interactivity with Vue
+- SPA-like navigation without the API complexity
+- Access to the Vue ecosystem (Composition API, libraries, components)
 - End-to-end type safety with Tuyau
 
 ---
