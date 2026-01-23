@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { usePage } from '@inertiajs/vue3'
-import { Link, Form } from '@adonisjs/inertia/vue'
-import { toast, Toaster } from 'vue-sonner'
 import { watch } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+import { toast, Toaster } from 'vue-sonner'
 import type { Data } from '@generated/data'
+import { Link, Form } from '@adonisjs/inertia/vue'
 
 const page = usePage<Data.SharedProps>()
 
@@ -19,7 +19,6 @@ watch(
   },
   { immediate: true }
 )
-
 </script>
 
 <template>

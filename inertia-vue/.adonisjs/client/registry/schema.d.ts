@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /// <reference path="../manifest.d.ts" />
 
-import type { ExtractBody, ExtractQuery, ExtractQueryForGet } from '@tuyau/core/types'
+import type { ExtractBody, ExtractQuery, ExtractQueryForGet, ExtractResponse } from '@tuyau/core/types'
 import type { InferInput } from '@vinejs/vine/types'
 
 export interface Registry {
@@ -24,7 +24,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: Awaited<ReturnType<import('#controllers/new_account_controller').default['create']>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['create']>>>
     }
   }
   'new_account.store': {
@@ -35,7 +35,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: ExtractQuery<InferInput<(typeof import('#validators/user').signupValidator)>>
-      response: Awaited<ReturnType<import('#controllers/new_account_controller').default['store']>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/new_account_controller').default['store']>>>
     }
   }
   'session.create': {
@@ -46,7 +46,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: Awaited<ReturnType<import('#controllers/session_controller').default['create']>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['create']>>>
     }
   }
   'session.store': {
@@ -57,7 +57,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: Awaited<ReturnType<import('#controllers/session_controller').default['store']>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['store']>>>
     }
   }
   'session.destroy': {
@@ -68,7 +68,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: Awaited<ReturnType<import('#controllers/session_controller').default['destroy']>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['destroy']>>>
     }
   }
 }
