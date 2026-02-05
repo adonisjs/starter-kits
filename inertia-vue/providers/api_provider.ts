@@ -53,6 +53,6 @@ const serializer = new ApiSerializer()
  * Usage in controllers: return ctx.serialize(data)
  * This ensures all API responses follow the same structure with data wrapping.
  */
-HttpContext.macro('serialize', function (this: HttpContext, values: any): any {
+HttpContext.instanceProperty('serialize', function (this: HttpContext, values: any): any {
   return serializer.serialize(values, this.containerResolver)
 })
