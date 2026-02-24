@@ -98,6 +98,11 @@ main {
   font-size: 22px;
   color: var(--gray-7);
 }
+.hero .button {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 10px 16px;
+}
 
 .cards {
   display: grid;
@@ -150,10 +155,12 @@ form {
 }
 label {
   margin-bottom: 4px;
+  display: block;
   font-size: 14px;
   font-weight: 500;
 }
 input,
+textarea,
 button {
   width: 100%;
   border-radius: 4px;
@@ -164,15 +171,18 @@ input {
   border: 1px solid var(--gray-4);
   padding: 0 16px;
 }
-input[data-invalid='true'] {
+input[data-invalid='true'],
+textarea[data-invalid='true'] {
   border-color: #fb2c36;
 }
-input[data-invalid='true'] + div {
+input[data-invalid='true'] + div,
+textarea[data-invalid='true'] + div {
   color: #fb2c36;
   font-size: 14px;
   font-weight: 500;
   margin-top: 2px;
 }
+
 button {
   background: var(--gray-12);
   color: #fff;
