@@ -8,6 +8,9 @@
   "workspaces": [
     "apps/*"
   ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
@@ -20,9 +23,6 @@
     "@adonisjs/prettier-config": "^1.4.5",
     "prettier": "^3.7.4",
     "turbo": "^2.3.3"
-  },
-  "engines": {
-    "node": ">=24.0.0"
   },
   "packageManager": "npm@10.9.2",
   "prettier": "@adonisjs/prettier-config"
