@@ -34,25 +34,27 @@ class ApiSerializer extends BaseSerializer<{
 }
 
 /**
- * Module augmentation to add the serialize method to HttpContext.
- * This allows controllers to use ctx.serialize() for consistent API responses.
- */
-declare module '@adonisjs/core/http' {
-  export interface HttpContext {
-    serialize: ApiSerializer['serialize']
-  }
-}
-
-/**
  * Single instance of ApiSerializer used across the application
  */
 const serializer = new ApiSerializer()
+const serialize = serializer.serialize.bind(serializer) as ApiSerializer['serialize'] & {
+  withoutWrapping: ApiSerializer['serializeWithoutWrapping']
+}
+serialize.withoutWrapping = serializer.serializeWithoutWrapping.bind(serializer)
 
 /**
  * Adds the serialize method to all HttpContext instances.
  * Usage in controllers: return ctx.serialize(data)
  * This ensures all API responses follow the same structure with data wrapping.
  */
-HttpContext.instanceProperty('serialize', function (this: HttpContext, values: any): any {
-  return serializer.serialize(values, this.containerResolver)
-})
+HttpContext.instanceProperty('serialize', serialize)
+
+/**
+ * Module augmentation to add the serialize method to HttpContext.
+ * This allows controllers to use ctx.serialize() for consistent API responses.
+ */
+declare module '@adonisjs/core/http' {
+  export interface HttpContext {
+    serialize: typeof serialize
+  }
+}

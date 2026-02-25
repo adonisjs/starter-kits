@@ -16,4 +16,10 @@ export default defineConfig({
       reload: ['resources/views/**/*.edge'],
     }),
   ],
+
+  server: {
+    watch: {
+      ignored: ['**/storage/**', '**/tmp/**'],
+    },
+  },
 })

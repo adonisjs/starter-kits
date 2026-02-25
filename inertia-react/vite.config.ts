@@ -20,4 +20,10 @@ export default defineConfig({
       '@generated': `${import.meta.dirname}/.adonisjs/client/`,
     },
   },
+
+  server: {
+    watch: {
+      ignored: ['**/storage/**', '**/tmp/**'],
+    },
+  },
 })
