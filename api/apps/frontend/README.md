@@ -29,15 +29,15 @@ npm create @tanstack/start@latest
 **Install Tuyau Client:**
 
 ```bash
-npm install @tuyau/client
+npm install @tuyau/core
 ```
 
 **Configure API Client:**
 
 ```typescript
 // src/lib/api.ts
-import { createTuyau } from '@tuyau/client'
-import type { registry } from '@api-starter-kit/backend/registry'
+import { createTuyau } from '@tuyau/core/client'
+import { registry } from '@api-starter-kit/backend/registry'
 
 export const api = createTuyau({
   baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:3333',
@@ -91,15 +91,15 @@ npx nuxi@latest init .
 **Install Tuyau Client:**
 
 ```bash
-npm install @tuyau/client
+npm install @tuyau/core
 ```
 
 **Configure API Client:**
 
 ```typescript
 // plugins/api.ts
-import { createTuyau } from '@tuyau/client'
-import type { registry } from '@api-starter-kit/backend/registry'
+import { createTuyau } from '@tuyau/core/client'
+import { registry } from '@api-starter-kit/backend/registry'
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
