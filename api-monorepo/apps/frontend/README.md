@@ -1,6 +1,6 @@
 # Frontend Workspace
 
-This is an **empty frontend starter** for the AdonisJS API Starter Kit. You can set up any frontend application to consume the type-safe API from the backend.
+This is an **empty frontend starter** for the AdonisJS API Monorepo Starter Kit. You can set up any frontend application to consume the type-safe API from the backend.
 
 ## 🎯 Purpose
 

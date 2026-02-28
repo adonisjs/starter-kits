@@ -7,7 +7,7 @@
   </p>
 
   <p>
-    Built for developers who want a production-ready API with any frontend framework.
+    Built for developers who want a production-ready standalone API.
   </p>
 
   <br>
@@ -38,7 +38,6 @@ This starter kit is designed to help you build production-ready APIs with Adonis
 - **🛡️ Security First** - CORS, Shield middleware, and secure authentication
 - **🔒 Type Safety** - End-to-end TypeScript with Tuyau for type-safe API calls
 - **🌐 CORS Ready** - Pre-configured for cross-origin requests
-- **📦 Monorepo** - Built with Turborepo and npm workspaces for optimal DX
 
 ### 🔧 Tech Stack
 
@@ -85,48 +84,36 @@ This starter kit is designed to help you build production-ready APIs with Adonis
       Full TypeScript support with strict mode enabled
     </td>
   </tr>
-  <tr>
-    <td><strong>Monorepo</strong></td>
-    <td>
-      <a href="https://turbo.build">Turborepo</a> + npm workspaces
-    </td>
-  </tr>
 </table>
 
 ---
 
 ## 🚀 Quick Start
 
-### From the Monorepo Root
+### From the Project Root
 
 ```bash
 # Install dependencies
 npm install
 
-# Run the development server (both backend and frontend)
+# Copy environment variables
+cp .env.example .env
+
+# Generate application key
+node ace generate:key
+
+# Run database migrations
+node ace migration:run
+
+# Run the development server with hot reload
 npm run dev
-
-# Run tests
-npm run test
-
-# Type check all apps
-npm run typecheck
-
-# Lint all apps
-npm run lint
-
-# Build for production
-npm run build
 ```
 
-### Backend Only (from apps/backend)
+### Useful Commands
 
 ```bash
-# Run the development server with hot reload
-node ace serve --hmr
-
 # Run tests
-node ace test
+npm run test
 
 # Type check
 npm run typecheck
@@ -148,7 +135,7 @@ Your API will be running at `http://localhost:3333`
 - `POST /api/v1/auth/signup` - Create a new account
 - `POST /api/v1/auth/login` - Login and get access token
 - `POST /api/v1/auth/logout` - Logout (requires authentication)
-- `GET /api/v1/me` - Get current user (requires authentication)
+- `GET /api/v1/account/profile` - Get current user profile (requires authentication)
 
 ---
 
@@ -181,9 +168,9 @@ Your API will be running at `http://localhost:3333`
   </tr>
   <tr>
     <td>
-      <a href="https://turbo.build"><strong>📦 Turborepo</strong></a>
+      <a href="https://docs.adonisjs.com/guides/authentication/introduction"><strong>🔐 Authentication Guide</strong></a>
       <br>
-      <span>Monorepo build system</span>
+      <span>Sessions and access tokens in AdonisJS</span>
     </td>
     <td>
       <a href="https://docs.adonisjs.com/guides/security/cors"><strong>🌐 CORS Guide</strong></a>

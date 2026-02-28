@@ -1,13 +1,13 @@
 <div align="center">
 
-  <h1>API Starter Kit</h1>
+  <h1>API Monorepo Starter Kit - Backend Workspace</h1>
 
   <p>
-    <strong>A batteries-included AdonisJS starter kit for building modern, type-safe APIs.</strong>
+    <strong>The backend workspace for the AdonisJS API Monorepo starter kit.</strong>
   </p>
 
   <p>
-    Built for developers who want a production-ready API with any frontend framework.
+    Built for teams who want a production-ready API inside a full-stack monorepo.
   </p>
 
   <br>
@@ -27,7 +27,7 @@
 
 ## ✨ What's in the Box
 
-This starter kit is designed to help you build production-ready APIs with AdonisJS. It provides a solid foundation with authentication, type-safe routes, and everything you need to build modern APIs that work with any frontend framework.
+This backend workspace is designed to help you build production-ready APIs with AdonisJS. It provides a solid foundation with authentication, type-safe routes, and everything you need to power any frontend from a shared monorepo.
 
 ### 🎯 Core Features
 
@@ -148,7 +148,7 @@ Your API will be running at `http://localhost:3333`
 - `POST /api/v1/auth/signup` - Create a new account
 - `POST /api/v1/auth/login` - Login and get access token
 - `POST /api/v1/auth/logout` - Logout (requires authentication)
-- `GET /api/v1/me` - Get current user (requires authentication)
+- `GET /api/v1/account/profile` - Get current user profile (requires authentication)
 
 ---
 
@@ -219,7 +219,7 @@ You can easily switch between strategies by changing the guard in your middlewar
 
 ## 🤝 Contributing
 
-This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/api-starter-kit/issues) or submit a pull request!
+This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/starter-kits/issues) or submit a pull request!
 
 ---
 
