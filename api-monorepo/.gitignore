@@ -13,7 +13,7 @@ dist
 .env.development.local
 
 # Temp files
-tmp
+/tmp
 
 # Logs
 npm-debug.log
