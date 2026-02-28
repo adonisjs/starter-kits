@@ -20,7 +20,13 @@ const viteBackendConfig = defineConfig({
    */
   assetsUrl: '/assets',
 
+  /**
+   * HTML attributes added to generated script tags.
+   */
   scriptAttributes: {
+    /**
+     * Execute scripts after HTML parsing is complete.
+     */
     defer: true,
   },
 })

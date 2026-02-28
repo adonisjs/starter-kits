@@ -28,9 +28,9 @@ const staticServerConfig = defineConfig({
 
   /**
    * How to handle dotfiles (files starting with .).
-   * 'ignore' - pretend dotfiles don't exist (404).
-   * 'allow' - serve dotfiles normally.
-   * 'deny' - respond with 403 Forbidden.
+   * Ignore dotfiles and respond as if they do not exist (ignore/404).
+   * Serve dotfiles normally with the allow mode.
+   * Reject access to dotfiles with deny mode (403).
    */
   dotFiles: 'ignore',
 })

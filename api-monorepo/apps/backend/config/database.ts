@@ -13,16 +13,37 @@ const dbConfig = defineConfig({
      */
     sqlite: {
       client: 'better-sqlite3',
+
       connection: {
         filename: app.tmpPath('db.sqlite3'),
       },
+
+      /**
+       * Required by Knex for SQLite defaults.
+       */
       useNullAsDefault: true,
+
       migrations: {
+        /**
+         * Sort migration files naturally by filename.
+         */
         naturalSort: true,
+
+        /**
+         * Paths containing migration files.
+         */
         paths: ['database/migrations'],
       },
+
       schemaGeneration: {
+        /**
+         * Enable schema generation from Lucid models.
+         */
         enabled: true,
+
+        /**
+         * Custom schema rules file paths.
+         */
         rulesPaths: ['./database/schema_rules.js'],
       },
     },

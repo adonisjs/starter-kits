@@ -13,10 +13,6 @@ const authConfig = defineConfig({
    */
   default: 'web',
 
-  /**
-   * List of authentication guards.
-   * Guards define how users are authenticated for different parts of the application.
-   */
   guards: {
     /**
      * Web guard uses session-based authentication for web requests.

@@ -7,6 +7,9 @@ const dbConfig = defineConfig({
    */
   connection: 'sqlite',
 
+  /**
+   * Pretty-print SQL debug output in development logs.
+   */
   prettyPrintDebugQueries: true,
 
   connections: {
@@ -23,6 +26,9 @@ const dbConfig = defineConfig({
         naturalSort: true,
         paths: ['database/migrations'],
       },
+      /**
+       * Emit SQL queries to the logger in development.
+       */
       debug: app.inDev,
     },
 

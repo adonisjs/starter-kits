@@ -8,9 +8,24 @@ import { defineConfig } from '@adonisjs/static'
  * https://docs.adonisjs.com/guides/static-assets
  */
 const staticServerConfig = defineConfig({
+  /**
+   * Enable or disable static file serving middleware.
+   */
   enabled: true,
+
+  /**
+   * Generate ETag headers for client/proxy caching.
+   */
   etag: true,
+
+  /**
+   * Include Last-Modified headers for conditional requests.
+   */
   lastModified: true,
+
+  /**
+   * Policy for files starting with a dot.
+   */
   dotFiles: 'ignore',
 })
 

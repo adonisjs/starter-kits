@@ -12,10 +12,6 @@ const loggerConfig = defineConfig({
    */
   default: 'app',
 
-  /**
-   * The loggers object can be used to define multiple loggers.
-   * By default, we configure only one logger (named "app").
-   */
   loggers: {
     /**
      * Application logger configuration.
@@ -43,7 +39,7 @@ const loggerConfig = defineConfig({
        * Ensures logs are written immediately for better debugging.
        * Disabled in production for better performance.
        */
-      desination: !app.inProduction ? await syncDestination() : undefined,
+      destination: !app.inProduction ? await syncDestination() : undefined,
 
       /**
        * Transport configuration defines where and how logs are sent.

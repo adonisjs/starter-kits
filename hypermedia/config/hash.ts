@@ -2,45 +2,62 @@ import { defineConfig, drivers } from '@adonisjs/core/hash'
 
 /**
  * Hashing configuration.
- * Defines the hashing algorithm and parameters used for password hashing.
+ *
+ * This starter uses Node.js scrypt under the hood.
+ * Node.js reference: https://nodejs.org/api/crypto.html#cryptoscryptpassword-salt-keylen-options-callback
  */
 const hashConfig = defineConfig({
   /**
-   * The default hashing algorithm to use.
+   * Default hasher used by the application.
    */
   default: 'scrypt',
 
-  /**
-   * List of available hashers and their configuration.
-   */
   list: {
     /**
-     * Scrypt hasher configuration.
-     * Scrypt is a password-based key derivation function designed to be
-     * computationally intensive and memory-hard to resist brute-force attacks.
+     * Scrypt is memory-hard, which makes brute-force attacks more expensive.
      */
     scrypt: drivers.scrypt({
       /**
-       * CPU/memory cost parameter.
-       * Higher values increase security but require more resources.
+       * Work factor (Node alias: N / cost).
+       * Higher values increase security and CPU+memory usage.
+       *
+       * Tuning guideline:
+       * - Start with 16384.
+       * - Increase gradually (for example 32768) and benchmark login/signup latency.
+       * - Keep values practical for your slowest production machine.
+       *
+       * Node constraint: value must be a power of two greater than 1.
        */
       cost: 16384,
 
       /**
-       * Block size parameter.
-       * Affects memory usage and performance.
+       * Block size (Node alias: r / blockSize).
+       * Increases memory and CPU linearly.
+       *
+       * Tuning guideline:
+       * - Keep 8 unless you have a measured reason to change it.
+       * - Raise only with benchmark data, because memory usage grows quickly.
        */
       blockSize: 8,
 
       /**
-       * Parallelization parameter.
-       * Controls the number of independent mixing functions.
+       * Parallelization (Node alias: p / parallelization).
+       * Controls how many independent computations are performed.
+       *
+       * Tuning guideline:
+       * - Keep 1 for most applications.
+       * - Increase only after load testing if your infrastructure benefits from it.
        */
       parallelization: 1,
 
       /**
-       * Maximum memory in bytes to use for hashing.
-       * Set to 32MB (33554432 bytes) by default.
+       * Maximum memory limit in bytes (Node alias: maxmem / maxMemory).
+       * Hashing throws if the estimated memory usage is above this limit.
+       * Node documents the check as approximately: 128 * N * r > maxmem.
+       *
+       * Tuning guideline:
+       * - Keep this aligned with your cost/blockSize choices.
+       * - Increase carefully on memory-constrained environments.
        */
       maxMemory: 33554432,
     }),

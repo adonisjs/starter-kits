@@ -45,7 +45,7 @@ export const http = defineConfig({
 
     /**
      * The path for which the cookie is valid.
-     * '/' means the cookie is accessible for all routes.
+     * The cookie is accessible for all routes when the value is '/'.
      */
     path: '/',
 
@@ -69,7 +69,8 @@ export const http = defineConfig({
 
     /**
      * Controls when cookies are sent with cross-site requests.
-     * 'lax' provides reasonable security while allowing some cross-site usage.
+     * This setting provides reasonable security while allowing some cross-site
+     * usage (value: 'lax').
      */
     sameSite: 'lax',
   },

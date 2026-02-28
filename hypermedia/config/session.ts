@@ -36,7 +36,7 @@ const sessionConfig = defineConfig({
   cookie: {
     /**
      * The path for which the cookie is valid.
-     * '/' means the cookie is accessible for all routes.
+     * The cookie is accessible for all routes when the value is '/'.
      */
     path: '/',
 
@@ -54,7 +54,8 @@ const sessionConfig = defineConfig({
 
     /**
      * Controls when cookies are sent with cross-site requests.
-     * 'lax' provides reasonable security while allowing some cross-site usage.
+     * This setting provides reasonable security while allowing some cross-site
+     * usage (value: 'lax').
      */
     sameSite: 'lax',
   },
@@ -76,6 +77,9 @@ const sessionConfig = defineConfig({
      * Suitable for small session data that doesn't exceed cookie size limits.
      */
     cookie: stores.cookie(),
+    /**
+     * Database store persists sessions in the configured SQL database.
+     */
     database: stores.database(),
   },
 })
