@@ -90,10 +90,8 @@ npm init adonisjs@latest -- -K=hypermedia
 Build modern single-page applications with React while keeping the simplicity of server-side routing.
 
 ```bash
-npm init adonisjs@latest -- -K=inertia
+npm init adonisjs@latest -- -K=react
 ```
-
-During setup, select `react` as your frontend adapter.
 
 **Includes:** React 19, Inertia.js, Tuyau (type-safe routing), Sonner (toast notifications)
 
@@ -106,10 +104,8 @@ During setup, select `react` as your frontend adapter.
 Build modern single-page applications with Vue while keeping the simplicity of server-side routing.
 
 ```bash
-npm init adonisjs@latest -- -K=inertia
+npm init adonisjs@latest -- -K=vue
 ```
-
-During setup, select `vue` as your frontend adapter.
 
 **Includes:** Vue 3, Inertia.js, Tuyau (type-safe routing), Vue Sonner (toast notifications)
 

@@ -127,12 +127,11 @@ This starter kit is designed to help you build production-ready single-page appl
 ### Create a New Project
 
 ```bash
-npm init adonisjs@latest -- -K=inertia
+npm init adonisjs@latest -- -K=react
 ```
 
 During setup, you'll be asked to choose:
 
-- **Frontend adapter**: Select `react`
 - **Database**: Choose your preferred database (SQLite, PostgreSQL, MySQL, MSSQL)
 - **Auth guard**: Select `session` for cookie-based authentication
 - **SSR**: Choose whether to enable server-side rendering (optional)
