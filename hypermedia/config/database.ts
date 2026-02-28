@@ -1,70 +1,108 @@
 import app from '@adonisjs/core/services/app'
 import { defineConfig } from '@adonisjs/lucid'
 
-/**
- * Database configuration.
- * Defines database connections, query settings, and migration options.
- */
 const dbConfig = defineConfig({
   /**
-   * The default database connection to use for making queries.
+   * Default connection used for all queries.
    */
   connection: 'sqlite',
 
-  /**
-   * Pretty print SQL queries in development mode for easier debugging.
-   */
   prettyPrintDebugQueries: true,
 
-  /**
-   * Available database connections.
-   * Multiple connections can be configured for different databases.
-   */
   connections: {
     /**
-     * SQLite connection configuration.
-     * Uses better-sqlite3 driver for synchronous SQLite operations.
+     * SQLite connection (default).
      */
     sqlite: {
       client: 'better-sqlite3',
-
-      /**
-       * SQLite database connection settings.
-       */
       connection: {
-        /**
-         * Path to the SQLite database file.
-         * Stored in the tmp directory by default.
-         */
         filename: app.tmpPath('db.sqlite3'),
       },
-
-      /**
-       * Use NULL as default value for undefined columns.
-       * Required for SQLite compatibility.
-       */
       useNullAsDefault: true,
-
-      /**
-       * Migration settings for this connection.
-       */
       migrations: {
-        /**
-         * Sort migration files in natural order (1, 2, 10 instead of 1, 10, 2).
-         */
         naturalSort: true,
-
-        /**
-         * Directories where migration files are stored.
-         */
         paths: ['database/migrations'],
       },
-
-      /**
-       * Enable SQL query debugging in development mode.
-       */
       debug: app.inDev,
     },
+
+    /**
+     * PostgreSQL connection.
+     * Install package to switch: npm install pg
+     */
+    // pg: {
+    //   client: 'pg',
+    //   connection: {
+    //     host: process.env.PG_HOST,
+    //     port: Number(process.env.PG_PORT || 5432),
+    //     user: process.env.PG_USER,
+    //     password: process.env.PG_PASSWORD,
+    //     database: process.env.PG_DB_NAME,
+    //   },
+    //   migrations: {
+    //     naturalSort: true,
+    //     paths: ['database/migrations'],
+    //   },
+    //   debug: app.inDev,
+    // },
+
+    /**
+     * MySQL / MariaDB connection.
+     * Install package to switch: npm install mysql2
+     */
+    // mysql: {
+    //   client: 'mysql2',
+    //   connection: {
+    //     host: process.env.MYSQL_HOST,
+    //     port: Number(process.env.MYSQL_PORT || 3306),
+    //     user: process.env.MYSQL_USER,
+    //     password: process.env.MYSQL_PASSWORD,
+    //     database: process.env.MYSQL_DB_NAME,
+    //   },
+    //   migrations: {
+    //     naturalSort: true,
+    //     paths: ['database/migrations'],
+    //   },
+    //   debug: app.inDev,
+    // },
+
+    /**
+     * Microsoft SQL Server connection.
+     * Install package to switch: npm install tedious
+     */
+    // mssql: {
+    //   client: 'mssql',
+    //   connection: {
+    //     server: process.env.MSSQL_SERVER,
+    //     port: Number(process.env.MSSQL_PORT || 1433),
+    //     user: process.env.MSSQL_USER,
+    //     password: process.env.MSSQL_PASSWORD,
+    //     database: process.env.MSSQL_DB_NAME,
+    //   },
+    //   migrations: {
+    //     naturalSort: true,
+    //     paths: ['database/migrations'],
+    //   },
+    //   debug: app.inDev,
+    // },
+
+    /**
+     * libSQL (Turso) connection.
+     * Install package to switch: npm install @libsql/client
+     */
+    // libsql: {
+    //   client: 'libsql',
+    //   connection: {
+    //     url: process.env.LIBSQL_URL,
+    //     authToken: process.env.LIBSQL_AUTH_TOKEN,
+    //   },
+    //   useNullAsDefault: true,
+    //   migrations: {
+    //     naturalSort: true,
+    //     paths: ['database/migrations'],
+    //   },
+    //   debug: app.inDev,
+    // },
   },
 })
 
