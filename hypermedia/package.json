@@ -47,7 +47,7 @@
     "@poppinss/ts-exec": "^1.4.4",
     "@types/alpinejs": "^3.13.11",
     "@types/luxon": "^3.7.1",
-    "@types/node": "^25.3.0",
+    "@types/node": "~24.11.0",
     "alpinejs": "^3.15.8",
     "eslint": "^10.0.2",
     "hot-hook": "^1.0.0",
