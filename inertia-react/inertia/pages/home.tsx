@@ -10,7 +10,7 @@ export default function Home() {
       </div>
 
       <div className="cards">
-        <a href="https://insiders.adonisjs.com/docs/v7-alpha/introduction" target="_blank">
+        <a href="https://docs.adonisjs.com/introduction" target="_blank">
           <h3>Official Docs &nbsp;›</h3>
           <p>Comprehensive reference for building with AdonisJS</p>
         </a>
