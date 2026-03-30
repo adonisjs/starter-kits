@@ -13,9 +13,14 @@ watch(
 )
 
 watch(
-  () => page.props.flash.error,
-  (error) => {
-    if (error) toast.error(error)
+  () => page.props.flash,
+  (flashMessages) => {
+    if (flashMessages.error) {
+      toast.error(flashMessages.error)
+    }
+    if (flashMessages.success) {
+      toast.success(flashMessages.success)
+    }
   },
   { immediate: true }
 )
