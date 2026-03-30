@@ -37,10 +37,19 @@ class ApiSerializer extends BaseSerializer<{
  * Single instance of ApiSerializer used across the application
  */
 const serializer = new ApiSerializer()
-const serialize = serializer.serialize.bind(serializer) as ApiSerializer['serialize'] & {
-  withoutWrapping: ApiSerializer['serializeWithoutWrapping']
-}
-serialize.withoutWrapping = serializer.serializeWithoutWrapping.bind(serializer)
+const serialize = Object.assign(
+  function (this: HttpContext, ...[data, resolver]: Parameters<ApiSerializer['serialize']>) {
+    return serializer.serialize(data, resolver ?? this.containerResolver)
+  },
+  {
+    withoutWrapping(
+      this: HttpContext,
+      ...[data, resolver]: Parameters<ApiSerializer['serializeWithoutWrapping']>
+    ) {
+      return serializer.serializeWithoutWrapping(data, resolver ?? this.containerResolver)
+    },
+  }
+) as ApiSerializer['serialize'] & { withoutWrapping: ApiSerializer['serializeWithoutWrapping'] }
 
 /**
  * Adds the serialize method to all HttpContext instances.
