@@ -42,6 +42,19 @@ export const http = defineConfig({
   useAsyncLocalStorage: false,
 
   /**
+   * Redirect configuration controls the behavior of
+   * response.redirect().back() and query string forwarding.
+   */
+  redirect: {
+    /**
+     * When enabled, all redirects automatically carry over the current
+     * request's query string parameters to the redirect destination.
+     * Use withQs(false) to opt out for a specific redirect.
+     */
+    forwardQueryString: true,
+  },
+
+  /**
    * Manage cookies configuration. The settings for the session id cookie are
    * defined inside the "config/session.ts" file.
    */
