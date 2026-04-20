@@ -20,15 +20,15 @@ router
     router
       .group(() => {
         router.post('signup', [controllers.NewAccount, 'store'])
-        router.post('login', [controllers.AccessToken, 'store'])
-        router.post('logout', [controllers.AccessToken, 'destroy']).use(middleware.auth())
+        router.post('login', [controllers.AccessTokens, 'store'])
       })
       .prefix('auth')
       .as('auth')
 
     router
       .group(() => {
-        router.get('/profile', [controllers.Profile, 'show'])
+        router.get('profile', [controllers.Profile, 'show'])
+        router.post('logout', [controllers.AccessTokens, 'destroy'])
       })
       .prefix('account')
       .as('profile')
