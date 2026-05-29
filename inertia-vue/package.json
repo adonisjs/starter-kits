@@ -72,6 +72,7 @@
     "@inertiajs/vue3": "^2.3.24",
     "@tuyau/core": "^1.2.2",
     "@vinejs/vine": "^4.4.0",
+    "@vue/server-renderer": "^3.5.35",
     "better-sqlite3": "^12.10.0",
     "edge.js": "^6.5.1",
     "luxon": "^3.7.2",
