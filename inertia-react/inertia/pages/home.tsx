@@ -10,17 +10,17 @@ export default function Home() {
       </div>
 
       <div className="cards">
-        <a href="https://docs.adonisjs.com/introduction" target="_blank">
+        <a href="https://docs.adonisjs.com/introduction" target="_blank" rel="noreferrer">
           <h3>Official Docs &nbsp;›</h3>
           <p>Comprehensive reference for building with AdonisJS</p>
         </a>
 
-        <a href="https://adocasts.com/" target="_blank">
+        <a href="https://adocasts.com/" target="_blank" rel="noreferrer">
           <h3>Adocasts &nbsp;›</h3>
           <p>Guided video tutorials for everyday development</p>
         </a>
 
-        <a href="https://discord.gg/vDcEjq6" target="_blank">
+        <a href="https://discord.gg/vDcEjq6" target="_blank" rel="noreferrer">
           <h3>Discord &nbsp;›</h3>
           <p>Connect with developers building with AdonisJS every day</p>
         </a>

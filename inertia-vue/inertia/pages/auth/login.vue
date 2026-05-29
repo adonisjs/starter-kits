@@ -10,13 +10,13 @@ import { Form } from '@adonisjs/inertia/vue'
     </div>
 
     <div>
-      <Form route="session.store" #default="{ processing, errors }">
+      <Form v-slot="{ processing, errors }" route="session.store">
         <div>
           <label for="email">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
-            id="email"
             autocomplete="username"
             :data-invalid="errors.email ? 'true' : undefined"
           />
@@ -26,9 +26,9 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="password">Password</label>
           <input
+            id="password"
             type="password"
             name="password"
-            id="password"
             autocomplete="current-password"
             :data-invalid="errors.password ? 'true' : undefined"
           />

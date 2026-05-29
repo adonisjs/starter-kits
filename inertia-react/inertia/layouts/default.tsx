@@ -1,13 +1,14 @@
-import { Data } from '@generated/data'
+import { type Data } from '@generated/data'
 import { toast, Toaster } from 'sonner'
 import { usePage } from '@inertiajs/react'
-import { ReactElement, useEffect } from 'react'
+import { type ReactElement, useEffect } from 'react'
 import { Form, Link } from '@adonisjs/inertia/react'
 
 export default function Layout({ children }: { children: ReactElement<Data.SharedProps> }) {
+  const { url } = usePage()
   useEffect(() => {
     toast.dismiss()
-  }, [usePage().url])
+  }, [url])
 
   useEffect(() => {
     if (children.props.flash.error) {
