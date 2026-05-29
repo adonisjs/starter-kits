@@ -10,13 +10,13 @@ import { Form } from '@adonisjs/inertia/vue'
     </div>
 
     <div>
-      <Form route="new_account.store" #default="{ processing, errors }">
+      <Form v-slot="{ processing, errors }" route="new_account.store">
         <div>
           <label for="fullName">Full name</label>
           <input
+            id="fullName"
             type="text"
             name="fullName"
-            id="fullName"
             :data-invalid="errors.fullName ? 'true' : undefined"
           />
           <div v-if="errors.fullName">{{ errors.fullName }}</div>
@@ -25,9 +25,9 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="email">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
-            id="email"
             autocomplete="email"
             :data-invalid="errors.email ? 'true' : undefined"
           />
@@ -37,9 +37,9 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="password">Password</label>
           <input
+            id="password"
             type="password"
             name="password"
-            id="password"
             autocomplete="new-password"
             :data-invalid="errors.password ? 'true' : undefined"
           />
@@ -49,9 +49,9 @@ import { Form } from '@adonisjs/inertia/vue'
         <div>
           <label for="passwordConfirmation">Confirm password</label>
           <input
+            id="passwordConfirmation"
             type="password"
             name="passwordConfirmation"
-            id="passwordConfirmation"
             autocomplete="new-password"
             :data-invalid="errors.passwordConfirmation ? 'true' : undefined"
           />
