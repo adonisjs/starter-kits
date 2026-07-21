@@ -24,6 +24,12 @@
     "prettier": "^3.8.3",
     "turbo": "^2.9.16"
   },
+  "allowScripts": {
+    "@swc/core": true,
+    "better-sqlite3": true,
+    "esbuild": true,
+    "fsevents": true
+  },
   "packageManager": "npm@11.12.1",
   "prettier": "@adonisjs/prettier-config"
 }
