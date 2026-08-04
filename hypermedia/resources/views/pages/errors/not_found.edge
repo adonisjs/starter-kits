@@ -1,6 +1,16 @@
-<h1>404 - Page not found</h1>
-<p>
-  This template is rendered by the
-  <a href="http://docs.adonisjs.com/guides/exception-handling#status-pages">status pages feature</a>
-  of the global exception handler.
-</p>
+@marketing()
+  <div class="home">
+    <article class="prose-card">
+      <div class="pc-top">
+        <span class="pc-status mono tag" style="color: var(--subtle);">
+          <span class="dot"></span>
+          404
+        </span>
+      </div>
+      <div class="pc-lead">Not found.</div>
+      <p class="pc-para">
+        The page you tried to reach doesn't exist. Check the URL or head back home.
+      </p>
+    </article>
+  </div>
+@end

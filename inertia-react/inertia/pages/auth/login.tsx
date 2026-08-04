@@ -1,49 +1,68 @@
-import { Form } from '@adonisjs/inertia/react'
+import AuthLayout from '~/layouts/auth'
+import { type ReactElement } from 'react'
+import { Form, Link } from '@adonisjs/inertia/react'
 
 export default function Login() {
   return (
-    <div className="form-container">
-      <div>
-        <h1> Login </h1>
-        <p>Enter your details below to login to your account</p>
-      </div>
+    <>
+      <h1 className="auth__title">Welcome back</h1>
+      <p className="auth__sub">Sign in to continue building.</p>
 
-      <div>
-        <Form route="session.store">
-          {({ errors }) => (
-            <>
-              <div>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete="username"
-                  data-invalid={errors.email ? 'true' : undefined}
-                />
-                {errors.email && <div>{errors.email}</div>}
-              </div>
+      <Form route="session.store">
+        {({ errors, processing }) => (
+          <div className="auth__form">
+            <div className="field">
+              <label className="field__label" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                className="field__input"
+                autoComplete="username"
+                placeholder="you@example.com"
+                aria-invalid={errors.email ? 'true' : 'false'}
+              />
+              {errors.email && <span className="field__error">{errors.email}</span>}
+            </div>
 
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                {errors.password ? <span>{errors.password}</span> : ''}
-              </div>
+            <div className="field">
+              <label className="field__label" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                className="field__input"
+                autoComplete="current-password"
+                placeholder="••••••••"
+                aria-invalid={errors.password ? 'true' : 'false'}
+              />
+              {errors.password && <span className="field__error">{errors.password}</span>}
+            </div>
 
-              <div>
-                <button type="submit" className="button">
-                  Login
-                </button>
-              </div>
-            </>
-          )}
-        </Form>
-      </div>
-    </div>
+            <button
+              type="submit"
+              className="btn btn--primary btn--block"
+              disabled={processing}
+              style={{ marginTop: 4 }}
+            >
+              {processing ? 'One moment…' : 'Sign in'}
+            </button>
+          </div>
+        )}
+      </Form>
+
+      <p className="auth__foot">
+        New here?{' '}
+        <Link route="new_account.create" className="il">
+          Create an account
+        </Link>
+      </p>
+    </>
   )
 }
+
+Login.layout = (page: ReactElement) => <AuthLayout>{page}</AuthLayout>

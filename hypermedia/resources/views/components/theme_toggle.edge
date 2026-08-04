@@ -1,0 +1,17 @@
+@let(currentTheme = request.plainCookie('kit_theme', {
+  defaultValue: 'light',
+  encoded: false,
+}))
+
+<button
+  type="button"
+  class="iconbtn"
+  data-initial-theme="{{ currentTheme }}"
+  x-data="themeToggle"
+  x-bind:aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+  x-bind:title="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+  x-on:click="toggle"
+>
+  @svg('lucide:sun', { width: 16, height: 16, 'x-show': "theme === 'dark'" })
+  @svg('lucide:moon', { width: 16, height: 16, 'x-show': "theme !== 'dark'" })
+</button>

@@ -26,4 +26,5 @@
     hasErrors: fieldKey in flashMessages.get('inputErrorsBag', {}),
   })
 @end
-{{{ await $slots.main() }}}
+
+<div class="field">{{{ await $slots.main() }}}</div>

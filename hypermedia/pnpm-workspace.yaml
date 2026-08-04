@@ -2,5 +2,7 @@ allowBuilds:
   '@swc/core': true
   better-sqlite3: true
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@adonisjs/eslint-config@3.1.0'
 onlyBuiltDependencies:
   - better-sqlite3

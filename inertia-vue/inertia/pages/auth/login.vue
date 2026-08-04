@@ -1,44 +1,57 @@
 <script setup lang="ts">
-import { Form } from '@adonisjs/inertia/vue'
+import { Form, Link } from '@adonisjs/inertia/vue'
+import AuthLayout from '~/layouts/auth.vue'
 </script>
 
 <template>
-  <div class="form-container">
-    <div>
-      <h1>Login</h1>
-      <p>Enter your details below to login to your account</p>
-    </div>
+  <AuthLayout>
+    <h1 class="auth__title">Welcome back</h1>
+    <p class="auth__sub">Sign in to continue building.</p>
 
-    <div>
-      <Form v-slot="{ processing, errors }" route="session.store">
-        <div>
-          <label for="email">Email</label>
+    <Form v-slot="{ processing, errors }" route="session.store">
+      <div class="auth__form">
+        <div class="field">
+          <label class="field__label" for="email">Email</label>
           <input
             id="email"
-            type="email"
             name="email"
+            type="email"
+            class="field__input"
             autocomplete="username"
-            :data-invalid="errors.email ? 'true' : undefined"
+            placeholder="you@example.com"
+            :aria-invalid="errors.email ? 'true' : 'false'"
           />
-          <div v-if="errors.email">{{ errors.email }}</div>
+          <span v-if="errors.email" class="field__error">{{ errors.email }}</span>
         </div>
 
-        <div>
-          <label for="password">Password</label>
+        <div class="field">
+          <label class="field__label" for="password">Password</label>
           <input
             id="password"
-            type="password"
             name="password"
+            type="password"
+            class="field__input"
             autocomplete="current-password"
-            :data-invalid="errors.password ? 'true' : undefined"
+            placeholder="••••••••"
+            :aria-invalid="errors.password ? 'true' : 'false'"
           />
-          <div v-if="errors.password">{{ errors.password }}</div>
+          <span v-if="errors.password" class="field__error">{{ errors.password }}</span>
         </div>
 
-        <div>
-          <button type="submit" class="button" :disabled="processing">Login</button>
-        </div>
-      </Form>
-    </div>
-  </div>
+        <button
+          type="submit"
+          class="btn btn--primary btn--block"
+          :disabled="processing"
+          :style="{ marginTop: '4px' }"
+        >
+          {{ processing ? 'One moment…' : 'Sign in' }}
+        </button>
+      </div>
+    </Form>
+
+    <p class="auth__foot">
+      New here?
+      <Link route="new_account.create" class="il">Create an account</Link>
+    </p>
+  </AuthLayout>
 </template>

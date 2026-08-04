@@ -1,32 +1,36 @@
-@layout()
-  <div class="form-container">
-    <div>
-      <h1>Login</h1>
-      <p>Enter your email and password below to log in</p>
-    </div>
+@auth()
+  <h1 class="auth__title">Welcome back</h1>
+  <p class="auth__sub">Sign in to continue building.</p>
+  @form({ route: 'session.store', method: 'POST', class: 'auth__form' })
+    @field.root({ name: 'email' })
+      @!field.label({ text: 'Email' })
+      @!input.control({
+        type: 'email',
+        autocomplete: 'username',
+        placeholder: 'you@example.com',
+      })
+      @!field.error()
+    @end
+    @field.root({ name: 'password' })
+      @!field.label({ text: 'Password' })
+      @!input.control({
+        type: 'password',
+        autocomplete: 'current-password',
+        placeholder: '••••••••',
+      })
+      @!field.error()
+    @end
+    @!button({ text: 'Sign in', type: 'submit', block: true, style: 'margin-top: 4px;' })
+  @end
 
-    <div>
-      @form({ route: 'session.store', method: 'POST' })
-        <div>
-          @field.root({ name: 'email' })
-            @!field.label({ text: 'Email' })
-            @!input.control({ type: 'email' })
-            @!field.error()
-          @end
-        </div>
+  <p class="auth__foot">
+    
+    
+    New here?
 
-        <div>
-          @field.root({ name: 'password' })
-            @!field.label({ text: 'Password' })
-            @!input.control({ type: 'password' })
-            @!field.error()
-          @end
-        </div>
 
-        <div>
-          @!button({ text: 'Login', type: 'submit' })
-        </div>
-      @end
-    </div>
-  </div>
+    @link({ route: 'new_account.create', class: 'il' })
+      Create an account
+    @end
+  </p>
 @end

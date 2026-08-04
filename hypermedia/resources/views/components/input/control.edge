@@ -2,7 +2,7 @@
 @let(inputValue = useOldValue
   ? $context.oldValue || $props.get('value') || ''
   : $props.get('value') || '')
-@let(classes = [])
+@let(classes = ['field__input'])
 
 <input {{
   $props

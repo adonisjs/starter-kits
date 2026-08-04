@@ -13,13 +13,19 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      * In that case, we must always assume that HttpContext is not fully hydrated
      * with all the properties
      */
-    const { session, auth } = ctx as Partial<HttpContext>
+    const { session, auth, request } = ctx as Partial<HttpContext>
 
     /**
      * Fetching the first error from the flash messages
      */
     const error = session?.flashMessages.get('error') as string
     const success = session?.flashMessages.get('success') as string
+
+    const theme: 'light' | 'dark' =
+      request?.plainCookie('kit_theme', {
+        defaultValue: 'light',
+        encoded: false,
+      }) ?? 'light'
 
     /**
      * Data shared with all Inertia pages. Make sure you are using
@@ -32,6 +38,7 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
         success,
       }),
       user: ctx.inertia.always(auth?.user ? UserTransformer.transform(auth.user) : undefined),
+      preferences: ctx.inertia.always({ theme }),
     }
   }
 
