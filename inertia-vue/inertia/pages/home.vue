@@ -37,7 +37,7 @@ import MarketingLayout from '~/layouts/marketing.vue'
             <a class="lrow" href="https://plus.adonisjs.com" target="_blank" rel="noreferrer">
               <span class="lrow__bullet" />
               <span class="lrow__title">AdonisJS Plus</span>
-              <span class="lrow__desc">Production components</span>
+              <span class="lrow__desc">Feature packs and Flow AI</span>
               <span class="lrow__arrow"><ArrowUpRight :size="16" /></span>
             </a>
           </li>

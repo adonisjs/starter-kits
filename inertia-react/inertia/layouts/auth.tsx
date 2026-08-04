@@ -25,16 +25,16 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           <div>
             <div className="pitch__t">Looking for production-ready auth?</div>
             <p className="pitch__p">
-              Check out Kit components, production-ready full-stack components from the creator of
+              Check out Feature packs, production-ready full-stack components from the creator of
               AdonisJS.
             </p>
             <a
               className="il pitch__a"
-              href="https://plus.adonisjs.com/kit"
+              href="https://plus.adonisjs.com/feature-packs"
               target="_blank"
               rel="noreferrer"
             >
-              Explore Kit components →
+              Explore Feature packs →
             </a>
           </div>
         </aside>

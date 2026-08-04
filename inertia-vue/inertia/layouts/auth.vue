@@ -24,16 +24,16 @@ import ThemeToggle from '~/components/theme_toggle.vue'
       <div>
         <div class="pitch__t">Looking for production-ready auth?</div>
         <p class="pitch__p">
-          Check out Kit components, production-ready full-stack components from the creator of
+          Check out Feature packs, production-ready full-stack components from the creator of
           AdonisJS.
         </p>
         <a
           class="il pitch__a"
-          href="https://plus.adonisjs.com/kit"
+          href="https://plus.adonisjs.com/feature-packs"
           target="_blank"
           rel="noreferrer"
         >
-          Explore Kit components →
+          Explore Feature packs →
         </a>
       </div>
     </aside>

@@ -38,7 +38,7 @@ export default function Home() {
             <a className="lrow" href="https://plus.adonisjs.com" target="_blank" rel="noreferrer">
               <span className="lrow__bullet" />
               <span className="lrow__title">AdonisJS Plus</span>
-              <span className="lrow__desc">Production components</span>
+              <span className="lrow__desc">Feature packs and Flow AI</span>
               <span className="lrow__arrow">
                 <ArrowUpRight size={16} />
               </span>
