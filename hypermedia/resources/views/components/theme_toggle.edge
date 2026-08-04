@@ -12,6 +12,14 @@
   x-bind:title="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
   x-on:click="toggle"
 >
-  @svg('lucide:sun', { width: 16, height: 16, 'x-show': "theme === 'dark'" })
-  @svg('lucide:moon', { width: 16, height: 16, 'x-show': "theme !== 'dark'" })
+  @svg('lucide:sun', {
+    width: 16,
+    height: 16,
+    class: 'themetoggle__icon themetoggle__icon--sun',
+  })
+  @svg('lucide:moon', {
+    width: 16,
+    height: 16,
+    class: 'themetoggle__icon themetoggle__icon--moon',
+  })
 </button>

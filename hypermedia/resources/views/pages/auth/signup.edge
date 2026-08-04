@@ -1,7 +1,13 @@
 @auth()
   <h1 class="auth__title">Create your account</h1>
   <p class="auth__sub">Start building with the starter kit.</p>
-  @form({ route: 'new_account.store', method: 'POST', class: 'auth__form' })
+  @form({
+    route: 'new_account.store',
+    method: 'POST',
+    class: 'auth__form',
+    'x-data': '{ submitting: false }',
+    'x-on:submit': 'submitting = true',
+  })
     @field.root({ name: 'fullName' })
       @!field.label({ text: 'Full name' })
       @!input.control({ autocomplete: 'name', placeholder: 'Ada Lovelace' })
@@ -39,15 +45,13 @@
       type: 'submit',
       block: true,
       style: 'margin-top: 4px;',
+      'x-bind:disabled': 'submitting',
+      'x-text': "submitting ? 'One moment…' : 'Create account'",
     })
   @end
 
   <p class="auth__foot">
-    
-    
     Already have an account?
-
-
     @link({ route: 'session.create', class: 'il' })
       Sign in
     @end

@@ -26,7 +26,15 @@ function toggle() {
     :title="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
     @click="toggle"
   >
-    <Sun v-if="theme === 'dark'" :size="16" />
-    <Moon v-else :size="16" />
+    <Sun
+      :size="16"
+      class="themetoggle__icon"
+      :class="{ 'themetoggle__icon--on': theme === 'dark' }"
+    />
+    <Moon
+      :size="16"
+      class="themetoggle__icon"
+      :class="{ 'themetoggle__icon--on': theme !== 'dark' }"
+    />
   </button>
 </template>

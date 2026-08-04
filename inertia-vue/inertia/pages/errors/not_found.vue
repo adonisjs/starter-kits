@@ -11,7 +11,10 @@ import MarketingLayout from '~/layouts/marketing.vue'
             <span class="dot" /> 404
           </span>
         </div>
-        <div class="pc-lead">Not found.</div>
+        <div class="pc-lead">
+          <span>Not found.</span>
+          <em>That route hasn't been built yet.</em>
+        </div>
         <p class="pc-para">
           The page you tried to reach doesn't exist. Check the URL or head back home.
         </p>

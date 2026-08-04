@@ -11,7 +11,10 @@ import MarketingLayout from '~/layouts/marketing.vue'
             <span class="dot" /> 500
           </span>
         </div>
-        <div class="pc-lead">Something broke.</div>
+        <div class="pc-lead">
+          <span>Something broke.</span>
+          <em>The server hit an unexpected error.</em>
+        </div>
         <p class="pc-para">
           Try again in a moment. If the problem persists, check the server logs for the underlying
           exception.
