@@ -6,6 +6,7 @@ minimumReleaseAgeExclude:
   - '@adonisjs/eslint-config@3.1.0'
   - '@adonisjs/prettier-config@1.5.0'
   - '@adonisjs/inertia@5.0.0-next.2'
+  - '@adonisjs/vite@6.0.0-next.3'
 onlyBuiltDependencies:
   - better-sqlite3
 overrides:
