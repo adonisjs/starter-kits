@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Form, Link } from '@adonisjs/inertia/vue'
 import AuthLayout from '~/layouts/auth.vue'
+import { Form, Link } from '@adonisjs/inertia/vue'
 </script>
 
 <template>

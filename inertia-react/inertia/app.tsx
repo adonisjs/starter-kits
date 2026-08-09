@@ -1,9 +1,9 @@
 import './css/app.css'
 import { client } from './client'
 import { createRoot } from 'react-dom/client'
-import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react'
 import { TuyauProvider } from '@adonisjs/inertia/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 

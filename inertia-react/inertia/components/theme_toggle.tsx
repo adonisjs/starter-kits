@@ -1,13 +1,12 @@
-import { Moon, Sun } from 'lucide-react'
 import { useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
 import { usePage } from '@inertiajs/react'
-import { type Data } from '@generated/data'
 
-const COOKIE = 'kit_theme'
+const COOKIE = 'app_theme'
 const ONE_YEAR = 60 * 60 * 24 * 365
 
 export default function ThemeToggle() {
-  const page = usePage<Data.SharedProps>()
+  const page = usePage()
   const [theme, setTheme] = useState<'light' | 'dark'>(page.props.preferences?.theme ?? 'light')
 
   const toggle = () => {

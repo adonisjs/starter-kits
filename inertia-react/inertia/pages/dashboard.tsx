@@ -1,6 +1,5 @@
-import DashboardLayout from '~/layouts/dashboard'
 import { LayoutGrid } from 'lucide-react'
-import { type ReactElement } from 'react'
+import DashboardLayout from '~/layouts/dashboard'
 
 export default function Dashboard() {
   return (
@@ -20,4 +19,4 @@ export default function Dashboard() {
   )
 }
 
-Dashboard.layout = (page: ReactElement) => <DashboardLayout>{page}</DashboardLayout>
+Dashboard.layout = [DashboardLayout]

@@ -1,5 +1,4 @@
 import MarketingLayout from '~/layouts/marketing'
-import { type ReactElement } from 'react'
 
 export default function NotFound() {
   return (
@@ -22,4 +21,4 @@ export default function NotFound() {
   )
 }
 
-NotFound.layout = (page: ReactElement) => <MarketingLayout>{page}</MarketingLayout>
+NotFound.layout = [MarketingLayout]

@@ -13,15 +13,10 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      * In that case, we must always assume that HttpContext is not fully hydrated
      * with all the properties
      */
-    const { session, auth, request } = ctx as Partial<HttpContext>
+    const { auth, request } = ctx as Partial<HttpContext>
 
-    /**
-     * Fetching the first error from the flash messages
-     */
-    const error = session?.flashMessages.get('error') as string
-    const success = session?.flashMessages.get('success') as string
     const theme: 'light' | 'dark' =
-      request?.plainCookie('kit_theme', {
+      request?.plainCookie('app_theme', {
         defaultValue: 'light',
         encoded: false,
       }) ?? 'light'
@@ -32,13 +27,23 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      */
     return {
       errors: ctx.inertia.always(this.getValidationErrors(ctx)),
-      flash: ctx.inertia.always({
-        error,
-        success,
-      }),
       user: ctx.inertia.always(auth?.user ? UserTransformer.transform(auth.user) : undefined),
       preferences: ctx.inertia.always({ theme }),
     }
+  }
+
+  flash(ctx: HttpContext) {
+    /**
+     * Flash messages travel in the dedicated `flash` field of the page
+     * object instead of props, and the client strips them from history
+     * state so they never reappear when navigating back.
+     */
+    const { session } = ctx as Partial<HttpContext>
+
+    const success: string | undefined = session?.flashMessages.get('success')
+    const error: string | undefined = session?.flashMessages.get('error')
+
+    return { success, error }
   }
 
   async handle(ctx: HttpContext, next: NextFn) {

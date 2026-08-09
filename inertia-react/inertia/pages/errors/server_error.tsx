@@ -1,5 +1,4 @@
 import MarketingLayout from '~/layouts/marketing'
-import { type ReactElement } from 'react'
 
 export default function ServerError() {
   return (
@@ -23,4 +22,4 @@ export default function ServerError() {
   )
 }
 
-ServerError.layout = (page: ReactElement) => <MarketingLayout>{page}</MarketingLayout>
+ServerError.layout = [MarketingLayout]

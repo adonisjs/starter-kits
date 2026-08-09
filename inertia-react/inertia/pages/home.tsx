@@ -1,6 +1,5 @@
-import MarketingLayout from '~/layouts/marketing'
 import { ArrowUpRight } from 'lucide-react'
-import { type ReactElement } from 'react'
+import MarketingLayout from '~/layouts/marketing'
 
 export default function Home() {
   return (
@@ -159,4 +158,4 @@ export default function Home() {
   )
 }
 
-Home.layout = (page: ReactElement) => <MarketingLayout>{page}</MarketingLayout>
+Home.layout = [MarketingLayout]

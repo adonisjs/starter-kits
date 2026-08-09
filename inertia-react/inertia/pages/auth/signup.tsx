@@ -1,5 +1,4 @@
 import AuthLayout from '~/layouts/auth'
-import { type ReactElement } from 'react'
 import { Form, Link } from '@adonisjs/inertia/react'
 
 export default function Signup() {
@@ -99,4 +98,4 @@ export default function Signup() {
   )
 }
 
-Signup.layout = (page: ReactElement) => <AuthLayout>{page}</AuthLayout>
+Signup.layout = [AuthLayout]

@@ -1,20 +1,19 @@
 import { useEffect } from 'react'
 import { toast, Toaster } from 'sonner'
-import { usePage } from '@inertiajs/react'
-import { type Data } from '@generated/data'
+import { router, usePage } from '@inertiajs/react'
 import { CircleAlert, CircleCheck } from 'lucide-react'
 
 export default function FlashToasts() {
-  const { url, props } = usePage<Data.SharedProps>()
+  const { flash } = usePage()
 
   useEffect(() => {
-    toast.dismiss()
-  }, [url])
+    return router.on('start', () => toast.dismiss('flash'))
+  }, [])
 
   useEffect(() => {
-    if (props.flash?.error) toast.error(props.flash.error, { id: 'flash' })
-    if (props.flash?.success) toast.success(props.flash.success, { id: 'flash' })
-  })
+    if (flash.error) toast.error(flash.error, { id: 'flash' })
+    if (flash.success) toast.success(flash.success, { id: 'flash' })
+  }, [flash])
 
   return (
     <Toaster

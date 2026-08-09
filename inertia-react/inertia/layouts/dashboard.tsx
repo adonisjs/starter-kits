@@ -1,8 +1,8 @@
 import Logo from '~/components/logo'
+import { type ReactNode } from 'react'
+import { House, LogOut } from 'lucide-react'
 import FlashToasts from '~/components/flash_toasts'
 import ThemeToggle from '~/components/theme_toggle'
-import { House, LogOut } from 'lucide-react'
-import { type ReactNode } from 'react'
 import { Form, Link } from '@adonisjs/inertia/react'
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {

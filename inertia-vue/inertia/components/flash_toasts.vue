@@ -2,10 +2,9 @@
 import { watch } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { toast, Toaster } from 'vue-sonner'
-import type { Data } from '@generated/data'
 import { CircleAlert, CircleCheck } from 'lucide-vue-next'
 
-const page = usePage<Data.SharedProps>()
+const page = usePage()
 
 watch(
   () => page.url,
@@ -13,10 +12,10 @@ watch(
 )
 
 watch(
-  () => page.props.flash,
+  () => page.flash,
   (flash) => {
-    if (flash?.error) toast.error(flash.error, { id: 'flash' })
-    if (flash?.success) toast.success(flash.success, { id: 'flash' })
+    if (flash.error) toast.error(flash.error, { id: 'flash' })
+    if (flash.success) toast.success(flash.success, { id: 'flash' })
   },
   { immediate: true }
 )

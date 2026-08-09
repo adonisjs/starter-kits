@@ -1,4 +1,4 @@
-@auth()
+@layouts.auth()
   <h1 class="auth__title">Create your account</h1>
   <p class="auth__sub">Start building with the starter kit.</p>
   @form({
@@ -51,7 +51,9 @@
   @end
 
   <p class="auth__foot">
+    
     Already have an account?
+
     @link({ route: 'session.create', class: 'il' })
       Sign in
     @end

@@ -1,5 +1,5 @@
-import { type ReactNode } from 'react'
 import Logo from '~/components/logo'
+import { type ReactNode } from 'react'
 import FlashToasts from '~/components/flash_toasts'
 import ThemeToggle from '~/components/theme_toggle'
 

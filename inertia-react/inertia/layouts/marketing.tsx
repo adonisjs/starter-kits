@@ -1,13 +1,12 @@
 import Logo from '~/components/logo'
-import FlashToasts from '~/components/flash_toasts'
-import ThemeToggle from '~/components/theme_toggle'
 import { type ReactNode } from 'react'
 import { usePage } from '@inertiajs/react'
 import { Link } from '@adonisjs/inertia/react'
-import { type Data } from '@generated/data'
+import FlashToasts from '~/components/flash_toasts'
+import ThemeToggle from '~/components/theme_toggle'
 
 export default function MarketingLayout({ children }: { children: ReactNode }) {
-  const { props } = usePage<Data.SharedProps>()
+  const { props } = usePage()
   return (
     <>
       <header className="appbar">

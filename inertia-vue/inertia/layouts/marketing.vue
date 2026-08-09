@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3'
 import { Link } from '@adonisjs/inertia/vue'
-import type { Data } from '@generated/data'
 import Logo from '~/components/logo.vue'
 import FlashToasts from '~/components/flash_toasts.vue'
 import ThemeToggle from '~/components/theme_toggle.vue'
 
-const page = usePage<Data.SharedProps>()
+const page = usePage()
 </script>
 
 <template>
