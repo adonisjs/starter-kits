@@ -13,13 +13,7 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      * In that case, we must always assume that HttpContext is not fully hydrated
      * with all the properties
      */
-    const { session, auth } = ctx as Partial<HttpContext>
-
-    /**
-     * Fetching the first error from the flash messages
-     */
-    const error = session?.flashMessages.get('error') as string
-    const success = session?.flashMessages.get('success') as string
+    const { auth } = ctx as Partial<HttpContext>
 
     /**
      * Data shared with all Inertia pages. Make sure you are using
@@ -27,11 +21,26 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      */
     return {
       errors: ctx.inertia.always(this.getValidationErrors(ctx)),
-      flash: ctx.inertia.always({
-        error,
-        success,
-      }),
       user: ctx.inertia.always(auth?.user ? UserTransformer.transform(auth.user) : undefined),
+    }
+  }
+
+  /**
+   * The flash bag is sent to every Inertia page as a top-level "flash" field
+   * (a sibling of "props") and is read on the client using "usePage().flash".
+   *
+   * Just like the share method, the flash method may run before the session
+   * middleware, so HttpContext must be treated as partially hydrated.
+   */
+  flash(ctx: HttpContext) {
+    const { session } = ctx as Partial<HttpContext>
+
+    /**
+     * Fetching the first error from the flash messages
+     */
+    return {
+      error: session?.flashMessages.get('error') as string | undefined,
+      success: session?.flashMessages.get('success') as string | undefined,
     }
   }
 
