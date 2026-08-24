@@ -17,6 +17,9 @@
       "cache": false,
       "persistent": true
     },
+    "codegen": {
+      "cache": false
+    },
     "test": {
       "dependsOn": ["build"],
       "cache": false
