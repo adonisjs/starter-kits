@@ -70,7 +70,7 @@ This backend workspace is designed to help you build production-ready APIs with 
   <tr>
     <td><strong>Type Safety</strong></td>
     <td>
-      <a href="https://tuyau.dev">Tuyau</a> - End-to-end type safety for API calls
+      <a href="https://docs.adonisjs.com/guides/frontend/api-client">Tuyau</a> - End-to-end type safety for API calls
     </td>
   </tr>
   <tr>
@@ -162,7 +162,7 @@ Your API will be running at `http://localhost:3333`
       <span>Complete guide to AdonisJS</span>
     </td>
     <td>
-      <a href="https://tuyau.dev"><strong>🔒 Tuyau</strong></a>
+      <a href="https://docs.adonisjs.com/guides/frontend/api-client"><strong>🔒 Tuyau</strong></a>
       <br>
       <span>Type-safe API calls</span>
     </td>
