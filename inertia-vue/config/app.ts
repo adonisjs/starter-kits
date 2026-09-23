@@ -24,6 +24,10 @@ export const http = defineConfig({
    */
   useAsyncLocalStorage: false,
 
+  router: {
+    matcher: 'tree',
+  },
+
   /**
    * Redirect configuration controls the behavior of
    * response.redirect().back() and query string forwarding.
