@@ -42,10 +42,15 @@ import MarketingLayout from '~/layouts/marketing.vue'
             </a>
           </li>
           <li>
-            <a class="lrow" href="https://adocasts.com" target="_blank" rel="noreferrer">
+            <a
+              class="lrow"
+              href="https://discord.com/invite/vDcEjq6"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span class="lrow__bullet" />
-              <span class="lrow__title">Adocasts</span>
-              <span class="lrow__desc">Screencasts & lessons</span>
+              <span class="lrow__title">Discord</span>
+              <span class="lrow__desc">Meet fellow AdonisJS developers</span>
               <span class="lrow__arrow"><ArrowUpRight :size="16" /></span>
             </a>
           </li>

@@ -44,10 +44,15 @@ export default function Home() {
             </a>
           </li>
           <li>
-            <a className="lrow" href="https://adocasts.com" target="_blank" rel="noreferrer">
+            <a
+              className="lrow"
+              href="https://discord.com/invite/vDcEjq6"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="lrow__bullet" />
-              <span className="lrow__title">Adocasts</span>
-              <span className="lrow__desc">Screencasts & lessons</span>
+              <span className="lrow__title">Discord</span>
+              <span className="lrow__desc">Meet fellow AdonisJS developers</span>
               <span className="lrow__arrow">
                 <ArrowUpRight size={16} />
               </span>
