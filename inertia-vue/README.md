@@ -97,7 +97,7 @@ This starter kit is designed to help you build production-ready single-page appl
   <tr>
     <td><strong>Type Safety</strong></td>
     <td>
-      <a href="https://tuyau.dev">Tuyau</a> - End-to-end type safety for routes and API calls
+      <a href="https://docs.adonisjs.com/guides/frontend/api-client">Tuyau</a> - End-to-end type safety for routes and API calls
     </td>
   </tr>
   <tr>
@@ -285,7 +285,7 @@ Need another area with a sidebar, like reports or admin? Copy `layouts/settings.
       <span>Modern Vue with Composition API</span>
     </td>
     <td>
-      <a href="https://tuyau.dev"><strong>🔒 Tuyau</strong></a>
+      <a href="https://docs.adonisjs.com/guides/frontend/api-client"><strong>🔒 Tuyau</strong></a>
       <br>
       <span>Type-safe routing and API calls</span>
     </td>

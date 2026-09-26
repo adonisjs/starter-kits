@@ -13,6 +13,7 @@
   },
   "scripts": {
     "dev": "turbo dev",
+    "codegen": "turbo codegen",
     "build": "turbo build",
     "test": "turbo test",
     "lint": "turbo lint",
@@ -25,5 +26,11 @@
     "turbo": "^2.11.3"
   },
   "packageManager": "npm@12.0.2",
+  "allowScripts": {
+    "@swc/core": true,
+    "better-sqlite3": true,
+    "esbuild": true,
+    "fsevents": true
+  },
   "prettier": "@adonisjs/prettier-config"
 }

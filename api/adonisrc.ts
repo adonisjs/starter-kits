@@ -1,4 +1,4 @@
-import { indexEntities } from '@adonisjs/core'
+import { indexEntities } from '@adonisjs/core/generators'
 import { defineConfig } from '@adonisjs/core/app'
 import { generateRegistry } from '@tuyau/core/hooks'
 

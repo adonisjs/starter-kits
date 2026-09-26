@@ -361,7 +361,7 @@ NUXT_PUBLIC_API_URL=http://localhost:3333
 
 ## 📖 Learn More
 
-- [Tuyau Documentation](https://tuyau.dev) - Type-safe API clients
+- [Tuyau Documentation](https://docs.adonisjs.com/guides/frontend/api-client) - Type-safe API clients
 - [TanStack Start Documentation](https://tanstack.com/start) - TanStack Start framework
 - [Nuxt Documentation](https://nuxt.com) - Nuxt framework
 - [AdonisJS Documentation](https://docs.adonisjs.com) - Backend framework

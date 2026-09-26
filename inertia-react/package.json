@@ -95,5 +95,11 @@
       "eslint": "$eslint"
     }
   },
+  "allowScripts": {
+    "@swc/core": true,
+    "better-sqlite3": true,
+    "esbuild": true,
+    "fsevents": true
+  },
   "prettier": "@adonisjs/prettier-config"
 }
