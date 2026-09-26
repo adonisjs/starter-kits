@@ -16,14 +16,13 @@ const password = () => vine.string().minLength(8).maxLength(32)
 export const signupValidator = vine.create({
   fullName: vine.string().nullable(),
   email: email().unique({ table: 'users', column: 'email' }),
-  password: password().confirmed({
-    confirmationField: 'passwordConfirmation',
-  }),
-  passwordConfirmation: vine.string(),
+  password: password(),
+  passwordConfirmation: password().sameAs('password'),
 })
 
 /**
- * Validator to use when logging in an existing user
+ * Validator to use before validating user credentials
+ * during login
  */
 export const loginValidator = vine.create({
   email: email(),

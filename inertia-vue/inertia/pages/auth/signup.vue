@@ -1,67 +1,87 @@
 <script setup lang="ts">
-import { Form } from '@adonisjs/inertia/vue'
+import AuthLayout from '~/layouts/auth.vue'
+import { Form, Link } from '@adonisjs/inertia/vue'
 </script>
 
 <template>
-  <div class="form-container">
-    <div>
-      <h1>Signup</h1>
-      <p>Enter your details below to create your account</p>
-    </div>
+  <AuthLayout>
+    <h1 class="auth__title">Create your account</h1>
+    <p class="auth__sub">Start building with the starter kit.</p>
 
-    <div>
-      <Form v-slot="{ processing, errors }" route="new_account.store">
-        <div>
-          <label for="fullName">Full name</label>
+    <Form v-slot="{ processing, errors }" route="new_account.store">
+      <div class="auth__form">
+        <div class="field">
+          <label class="field__label" for="fullName">Full name</label>
           <input
             id="fullName"
-            type="text"
             name="fullName"
-            :data-invalid="errors.fullName ? 'true' : undefined"
+            type="text"
+            class="field__input"
+            autocomplete="name"
+            placeholder="Ada Lovelace"
+            :aria-invalid="errors.fullName ? 'true' : 'false'"
           />
-          <div v-if="errors.fullName">{{ errors.fullName }}</div>
+          <span v-if="errors.fullName" class="field__error">{{ errors.fullName }}</span>
         </div>
 
-        <div>
-          <label for="email">Email</label>
+        <div class="field">
+          <label class="field__label" for="email">Email</label>
           <input
             id="email"
-            type="email"
             name="email"
+            type="email"
+            class="field__input"
             autocomplete="email"
-            :data-invalid="errors.email ? 'true' : undefined"
+            placeholder="you@example.com"
+            :aria-invalid="errors.email ? 'true' : 'false'"
           />
-          <div v-if="errors.email">{{ errors.email }}</div>
+          <span v-if="errors.email" class="field__error">{{ errors.email }}</span>
         </div>
 
-        <div>
-          <label for="password">Password</label>
+        <div class="field">
+          <label class="field__label" for="password">Password</label>
           <input
             id="password"
-            type="password"
             name="password"
+            type="password"
+            class="field__input"
             autocomplete="new-password"
-            :data-invalid="errors.password ? 'true' : undefined"
+            placeholder="••••••••"
+            :aria-invalid="errors.password ? 'true' : 'false'"
           />
-          <div v-if="errors.password">{{ errors.password }}</div>
+          <span v-if="errors.password" class="field__error">{{ errors.password }}</span>
         </div>
 
-        <div>
-          <label for="passwordConfirmation">Confirm password</label>
+        <div class="field">
+          <label class="field__label" for="passwordConfirmation">Confirm password</label>
           <input
             id="passwordConfirmation"
-            type="password"
             name="passwordConfirmation"
+            type="password"
+            class="field__input"
             autocomplete="new-password"
-            :data-invalid="errors.passwordConfirmation ? 'true' : undefined"
+            placeholder="••••••••"
+            :aria-invalid="errors.passwordConfirmation ? 'true' : 'false'"
           />
-          <div v-if="errors.passwordConfirmation">{{ errors.passwordConfirmation }}</div>
+          <span v-if="errors.passwordConfirmation" class="field__error">
+            {{ errors.passwordConfirmation }}
+          </span>
         </div>
 
-        <div>
-          <button type="submit" class="button" :disabled="processing">Sign up</button>
-        </div>
-      </Form>
-    </div>
-  </div>
+        <button
+          type="submit"
+          class="btn btn--primary btn--block"
+          :disabled="processing"
+          :style="{ marginTop: '4px' }"
+        >
+          {{ processing ? 'One moment…' : 'Create account' }}
+        </button>
+      </div>
+    </Form>
+
+    <p class="auth__foot">
+      Already have an account?
+      <Link route="session.create" class="il">Sign in</Link>
+    </p>
+  </AuthLayout>
 </template>

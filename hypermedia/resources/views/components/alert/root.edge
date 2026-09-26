@@ -1,6 +1,6 @@
-@let(variant = $props.get('variant') || 'default')
+@let(variant = $props.get('variant') || 'success')
 @inject({ variant, autoDismiss: $props.get('autoDismiss') })
-@let(classes = ['alert', `alert-${variant}`])
+@let(classes = ['alert', `alert--${variant}`])
 
 <div {{
   $props
@@ -14,5 +14,12 @@
     })
     .toAttrs()
 }}>
-  {{{ await $slots.main() }}}
+  <span class="alert__icon">
+    @if(variant === 'destructive')
+      @svg('lucide:circle-alert', { width: 18, height: 18 })
+    @else
+      @svg('lucide:circle-check', { width: 18, height: 18 })
+    @end
+  </span>
+  <div class="alert__body">{{{ await $slots.main() }}}</div>
 </div>

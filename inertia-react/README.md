@@ -172,6 +172,101 @@ Your app will be running at `http://localhost:3333`
 
 ---
 
+## 🧱 Adding Pages
+
+The kit ships the building blocks for app pages, without shipping pages you would have to delete.
+
+| Piece                            | What it does                                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `inertia/components/page.tsx`    | Sets the document title and renders the page heading, description and actions.                 |
+| `inertia/components/section.tsx` | A group of content within a page, with an optional title. Stacked sections get a divider.      |
+| `inertia/layouts/settings.tsx`   | The settings area: a heading, a sidebar of links and a card holding the current settings page. |
+| `nav` in `layouts/app.tsx`       | The top-level navigation. Add an entry for every new area of your app.                         |
+
+### A single page
+
+Wrap the page in `Page` and use the app layout. Pass `hideTitle` when the page should set the document title without rendering a heading.
+
+```tsx
+// inertia/pages/reports.tsx
+import Page from '~/components/page'
+import AppLayout from '~/layouts/app'
+
+export default function Reports() {
+  return (
+    <Page title="Reports" description="Monthly numbers at a glance.">
+      …
+    </Page>
+  )
+}
+
+Reports.layout = [AppLayout]
+```
+
+Register a route for it and add an entry to `nav` in `inertia/layouts/app.tsx` to link to it.
+
+To show content on a card, wrap it in `<div className="panel">`. The settings layout uses the same class for its content card.
+
+### Settings pages
+
+The settings layout is ready, it only needs pages. Start with a route group.
+
+```ts
+// start/routes.ts
+router
+  .group(() => {
+    router.on('/').renderInertia('settings/profile', {}).as('profile')
+    router.on('/security').renderInertia('settings/security', {}).as('security')
+  })
+  .prefix('/settings')
+  .as('settings')
+  .use(middleware.auth())
+```
+
+List the pages in `items` inside `inertia/layouts/settings.tsx`. The sidebar highlights the current one.
+
+```tsx
+const items: NavItem[] = [
+  { label: 'Profile', route: 'settings.profile', icon: User },
+  { label: 'Security', route: 'settings.security', icon: Shield },
+]
+```
+
+Each page nests the settings layout inside the app layout, so the sidebar persists as you move between pages.
+
+```tsx
+// inertia/pages/settings/profile.tsx
+import { Head } from '@inertiajs/react'
+import Section from '~/components/section'
+import AppLayout from '~/layouts/app'
+import SettingsLayout from '~/layouts/settings'
+
+export default function Profile() {
+  return (
+    <>
+      <Head title="Profile" />
+      <Section title="Profile" description="This is how others will see you.">
+        <div className="field">
+          <label className="field__label" htmlFor="username">
+            Username
+          </label>
+          <input className="field__input" id="username" name="username" />
+          <p className="field__hint">This is your public display name.</p>
+        </div>
+      </Section>
+    </>
+  )
+}
+
+Profile.layout = [AppLayout, SettingsLayout]
+```
+
+Finally, add `{ label: 'Settings', route: 'settings.profile', icon: Settings }` to `nav` in the app layout. It stays active on every page under `/settings`.
+
+Need another area with a sidebar, like reports or admin? Copy `layouts/settings.tsx`, change its heading and items. The `sidebar-layout` styles are shared.
+
+---
+
 ## 📚 Learn More
 
 <table>
