@@ -9,10 +9,10 @@ export default function MarketingLayout({ children }: { children: ReactNode }) {
   const { props } = usePage()
   return (
     <>
-      <header className="appbar">
-        <div className="appbar__inner">
+      <header className="header header--floating">
+        <div className="header__inner">
           <Logo size={28} />
-          <div className="appbar__right">
+          <div className="header__right">
             <ThemeToggle />
             {props.user ? (
               <Link route="dashboard" className="btn btn--primary btn--sm">

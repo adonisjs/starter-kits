@@ -9,10 +9,10 @@ const page = usePage()
 </script>
 
 <template>
-  <header class="appbar">
-    <div class="appbar__inner">
+  <header class="header header--floating">
+    <div class="header__inner">
       <Logo :size="28" />
-      <div class="appbar__right">
+      <div class="header__right">
         <ThemeToggle />
         <template v-if="page.props.user">
           <Link route="dashboard" class="btn btn--primary btn--sm">Dashboard</Link>

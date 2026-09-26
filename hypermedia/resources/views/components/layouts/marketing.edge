@@ -16,10 +16,10 @@
     @stack('dumper')
   </head>
   <body>
-    <header class="appbar">
-      <div class="appbar__inner">
+    <header class="header header--floating">
+      <div class="header__inner">
         @!logo({ size: 28 })
-        <div class="appbar__right">
+        <div class="header__right">
           @!themeToggle()
           @if(auth.user)
             @link({ route: 'dashboard', class: 'btn btn--primary btn--sm' })

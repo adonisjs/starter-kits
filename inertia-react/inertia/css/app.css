@@ -92,11 +92,6 @@ input {
   text-transform: uppercase;
   color: var(--subtle);
 }
-.serif {
-  font-family: var(--serif);
-  font-weight: 400;
-  letter-spacing: 0.2px;
-}
 
 /* --- buttons --- */
 .btn {
@@ -215,6 +210,11 @@ input {
 :root[data-theme='dark'] .field__input[data-invalid='true'] {
   border-color: #e0685c;
 }
+.field__hint {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-wrap: pretty;
+}
 .field__error {
   font-size: 12.5px;
   color: #c0392b;
@@ -234,17 +234,6 @@ input {
 }
 .il:hover {
   text-decoration-color: var(--ink);
-}
-
-/* --- wordmark / logo --- */
-.wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  font-size: 15px;
-  color: var(--ink);
 }
 
 /* --- icon button --- */
@@ -300,7 +289,21 @@ input {
 /* ==========================================================================
    Marketing — floating header + centered prose card
    ========================================================================== */
-.appbar {
+/* --- header: shared by the marketing and app layouts --- */
+.header__inner {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* transparent, over the page content (marketing layout) */
+.header--floating {
   position: absolute;
   top: 0;
   left: 0;
@@ -308,19 +311,16 @@ input {
   z-index: 10;
   padding: 22px 0;
 }
-.appbar__inner {
+.header--floating .header__inner {
   max-width: 1100px;
   margin: 0 auto;
-  width: 100%;
-  padding: 0 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
-.appbar__right {
+/* solid bar above the page content (app layout) */
+.header--bar {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  height: 60px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
 }
 
 .home {
@@ -521,11 +521,6 @@ input {
   height: 20px;
   display: block;
 }
-.pile .tile .mono-mark {
-  font-family: var(--mono);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
 
 /* ==========================================================================
    Auth — split, form left, colophon + Plus pitch right
@@ -617,22 +612,8 @@ input {
 }
 
 /* ==========================================================================
-   Dashboard
+   App layout
    ========================================================================== */
-.dashbar {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  padding: 0 30px;
-  background: var(--card);
-}
-.dashbar__right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 .subnav {
   height: 48px;
   display: flex;
@@ -660,10 +641,10 @@ input {
 .subnav__item:hover {
   color: var(--ink);
 }
-.subnav__item--active {
+.subnav__item[aria-current='page'] {
   color: var(--ink);
 }
-.subnav__item--active::after {
+.subnav__item[aria-current='page']::after {
   content: '';
   position: absolute;
   left: 0;
@@ -672,11 +653,122 @@ input {
   height: 2px;
   background: var(--ink);
 }
-.dash {
+.app-main {
   min-height: calc(100vh - 108px);
   display: flex;
   background: var(--paper);
 }
+
+/* ==========================================================================
+   Page building blocks
+   ========================================================================== */
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 30px 64px;
+}
+.page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-bottom: 28px;
+}
+.page__title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.page__description {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14.5px;
+  text-wrap: pretty;
+}
+.page__actions {
+  display: flex;
+  gap: 10px;
+}
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-lg);
+  padding: 28px;
+}
+.section + .section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.section__title {
+  font-size: 15px;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+}
+.section__description {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13.5px;
+  text-wrap: pretty;
+}
+.section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.section__header + .section__body {
+  margin-top: 18px;
+}
+.sidebar-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.sidebar-layout__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-lg);
+}
+.sidebar-layout__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: var(--r);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.sidebar-layout__item:hover {
+  color: var(--ink);
+}
+.sidebar-layout__item[aria-current='page'] {
+  color: var(--ink);
+  background: color-mix(in oklab, var(--ink) 6%, var(--card));
+}
+.sidebar-layout__item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+.sidebar-layout__content {
+  min-width: 0;
+}
+
 .empty {
   margin: auto;
   text-align: center;
@@ -796,5 +888,21 @@ input {
   }
   .pc-lead {
     font-size: 30px;
+  }
+}
+@media (max-width: 720px) {
+  .page {
+    padding: 28px 16px 48px;
+  }
+  .sidebar-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .sidebar-layout__nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .panel {
+    padding: 20px;
   }
 }

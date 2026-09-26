@@ -172,6 +172,97 @@ Your app will be running at `http://localhost:3333`
 
 ---
 
+## 🧱 Adding Pages
+
+The kit ships the building blocks for app pages, without shipping pages you would have to delete.
+
+| Piece                            | What it does                                                                                   |
+| -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `inertia/components/page.vue`    | Sets the document title and renders the page heading, description and actions.                 |
+| `inertia/components/section.vue` | A group of content within a page, with an optional title. Stacked sections get a divider.      |
+| `inertia/layouts/settings.vue`   | The settings area: a heading, a sidebar of links and a card holding the current settings page. |
+| `nav` in `layouts/app.vue`       | The top-level navigation. Add an entry for every new area of your app.                         |
+
+### A single page
+
+Wrap the page in `Page` inside the app layout. Pass `hide-title` when the page should set the document title without rendering a heading. Buttons or links for the page header go in the `actions` slot.
+
+```vue
+<!-- inertia/pages/reports.vue -->
+<script setup lang="ts">
+import Page from '~/components/page.vue'
+import AppLayout from '~/layouts/app.vue'
+</script>
+
+<template>
+  <AppLayout>
+    <Page title="Reports" description="Monthly numbers at a glance.">…</Page>
+  </AppLayout>
+</template>
+```
+
+Register a route for it and add an entry to `nav` in `inertia/layouts/app.vue` to link to it.
+
+To show content on a card, wrap it in `<div class="panel">`. The settings layout uses the same class for its content card.
+
+### Settings pages
+
+The settings layout is ready, it only needs pages. Start with a route group.
+
+```ts
+// start/routes.ts
+router
+  .group(() => {
+    router.on('/').renderInertia('settings/profile', {}).as('profile')
+    router.on('/security').renderInertia('settings/security', {}).as('security')
+  })
+  .prefix('/settings')
+  .as('settings')
+  .use(middleware.auth())
+```
+
+List the pages in `items` inside `inertia/layouts/settings.vue`. The sidebar highlights the current one.
+
+```ts
+const items: NavItem[] = [
+  { label: 'Profile', route: 'settings.profile', icon: User },
+  { label: 'Security', route: 'settings.security', icon: Shield },
+]
+```
+
+Each page renders inside the app layout and the settings layout.
+
+```vue
+<!-- inertia/pages/settings/profile.vue -->
+<script setup lang="ts">
+import { Head } from '@inertiajs/vue3'
+import Section from '~/components/section.vue'
+import AppLayout from '~/layouts/app.vue'
+import SettingsLayout from '~/layouts/settings.vue'
+</script>
+
+<template>
+  <AppLayout>
+    <SettingsLayout>
+      <Head title="Profile" />
+      <Section title="Profile" description="This is how others will see you.">
+        <div class="field">
+          <label class="field__label" for="username">Username</label>
+          <input id="username" class="field__input" name="username" />
+          <p class="field__hint">This is your public display name.</p>
+        </div>
+      </Section>
+    </SettingsLayout>
+  </AppLayout>
+</template>
+```
+
+Finally, add `{ label: 'Settings', route: 'settings.profile', icon: Settings }` to `nav` in the app layout. It stays active on every page under `/settings`.
+
+Need another area with a sidebar, like reports or admin? Copy `layouts/settings.vue`, change its heading and items. The `sidebar-layout` styles are shared.
+
+---
+
 ## 📚 Learn More
 
 <table>
