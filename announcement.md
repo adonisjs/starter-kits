@@ -12,19 +12,37 @@ All three web kits now support light and dark themes out of the box. The theme i
 
 ## Purpose-built layouts instead of one generic shell
 
-The old single shared layout is gone. In its place, each kit ships three layouts that mirror how real apps are structured:
+The old single shared layout is gone. In its place, each kit ships four layouts that mirror how real apps are structured:
 
-- **Marketing** — public pages, with a header that adapts to the auth state.
+- **Marketing** — public pages, with a floating header that adapts to the auth state.
 - **Auth** — a focused two-column shell for login and signup.
-- **Dashboard** — the authenticated area, with a top bar, navigation, and logout.
+- **App** — the authenticated area, with a top bar, navigation built from a list of links, and logout.
+- **Settings** — a sidebar of links and a panel for the current page, ready for your own settings pages. It nests inside the app layout.
 
-In the Inertia kits, layouts are now attached per page rather than injected globally, so opting a page out of a layout — or adding a new one — is a one-line change.
+The marketing and app layouts share a single header component, rendered as a floating header or a full-width bar. In the hypermedia kit, layouts live under `resources/views/components/layouts` and are used as `@layouts.app(...)`.
+
+In the Inertia kits, layouts are now attached per page rather than injected globally. A page declares its layouts as an array, so opting out of a layout, adding one, or nesting them is a one-line change:
+
+```tsx
+Dashboard.layout = [AppLayout]
+Profile.layout = [AppLayout, SettingsLayout]
+```
 
 There is also a new authenticated `/dashboard` route in every web kit. It is intentionally an empty state: after login or signup you land somewhere real, with a pointer to the exact file to start building in.
 
+## Building blocks for your own pages
+
+The kits don't ship pages you would delete on day one. They ship the pieces you need to add your own:
+
+- **Page** renders a page heading, an optional description, and actions.
+- **Section** groups content under a title.
+- **NavLink** marks the current route with `aria-current`, matching nested URLs by default.
+
+Each kit's README walks through adding a new page and a new settings area with these components.
+
 ## Fully typed forms
 
-The Inertia kits now run on `@adonisjs/inertia@next` together with Inertia v3. The headline feature: the `Form` component understands your routes end to end. Point it at a route (`<Form route="session.store">`), and the form's `errors` object is **typed from that route's Vine validator** — `errors.email` autocompletes, and a typo in a field name is a compile error, in both React and Vue.
+The Inertia kits now run on `@adonisjs/inertia` v5 together with Inertia v3. The headline feature: the `Form` component understands your routes end to end. Point it at a route (`<Form route="session.store">`), and the form's `errors` object is **typed from that route's Vine validator** — `errors.email` autocompletes, and a typo in a field name is a compile error, in both React and Vue.
 
 ## Better auth defaults
 
@@ -34,15 +52,15 @@ The Inertia kits now run on `@adonisjs/inertia@next` together with Inertia v3. T
 
 ## Icons, toasts, and polish
 
-The kits now use [Lucide](https://lucide.dev) icons throughout — via `lucide-react` and `lucide-vue-next` in the Inertia kits, and via `edge-iconify` with the `@svg('lucide:…')` tag in the hypermedia kit. Flash messages render through fully custom-styled toasts that match the design system in both themes, and the error pages (404/500) are now designed pages rather than placeholder headings.
+The kits now use [Lucide](https://lucide.dev) icons throughout — via `lucide-react` and `lucide-vue-next` in the Inertia kits, and via `edge-iconify` with the `@svg('lucide:…')` tag in the hypermedia kit. Flash messages render through fully custom-styled toasts that match the design system in both themes. In the Inertia kits, they travel in the dedicated `flash` field of the page object (read with `usePage().flash`) instead of props, so they never reappear when navigating back. The error pages (404/500) are now designed pages rather than placeholder headings.
 
 ## Latest everything
 
-All five kits — including the API kits, which are otherwise unchanged — now target the latest ecosystem versions: Vite 8, Inertia 3, ESLint 10.8, better-sqlite3 13, React 19.2 / Vue 3.5.40, and the `@next` releases of `@adonisjs/vite` and `@adonisjs/inertia`. TypeScript stays on v6 for now.
+All five kits — including the API kits, which are otherwise unchanged — now target the latest ecosystem versions: Vite 8.3, Inertia 3.7, ESLint 10.11, better-sqlite3 13, React 19.3 / Vue 3.5.43, `@adonisjs/vite` 6, and `@adonisjs/inertia` 5. TypeScript stays on v6 for now.
 
 ## Upgrading an existing app?
 
-The starter kits are templates, so there is nothing to upgrade automatically — but if you want to bring these changes into an existing app, two things are worth knowing when you move to the `@next` packages:
+The starter kits are templates, so there is nothing to upgrade automatically — but if you want to bring these changes into an existing app, two things are worth knowing when you move to `@adonisjs/vite` 6 and `@adonisjs/inertia` 5:
 
 1. In `vite.config.ts`, the `@adonisjs/vite` plugin option is now `entryPoints` (previously `entrypoints`).
 2. The `@adonisjs/inertia/vite` plugin is gone — you can remove it from your Vite config. SSR entry points are now declared through the `serverEntryPoints` option of the AdonisJS Vite plugin.
