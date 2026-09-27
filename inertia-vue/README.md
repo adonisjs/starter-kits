@@ -1,7 +1,10 @@
 <div align="center">
 
   <!-- Add your cover image here -->
-  <img src="https://github.com/adonisjs/.github/blob/next/docs/vue-inertia-adonisjs.png?raw=true" alt="AdonisJS Vue Inertia Starter Kit" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/adonisjs/starter-kits/blob/main/docs/vue-dark.png?raw=true">
+    <img src="https://github.com/adonisjs/starter-kits/blob/main/docs/vue-light.png?raw=true" alt="AdonisJS Vue Inertia Starter Kit" width="100%">
+  </picture>
 
   <h1>Vue Inertia Starter Kit</h1>
 
@@ -37,8 +40,11 @@ This starter kit is designed to help you build production-ready single-page appl
 - **🔐 Authentication System** - Complete user signup, login, and session management out of the box
 - **💚 Vue 3** - Latest Vue with Composition API and script setup
 - **🔄 Inertia.js** - Build SPAs without the API complexity—server-side routing that feels like client-side
-- **🎨 Custom Design System** - Beautiful, accessible components with modern CSS (OKLCH color system)
-- **✅ Form Validation** - Powered by VineJS with automatic error handling
+- **🎨 Custom Design System** - Hand-written CSS built on semantic design tokens, re-themed from one place in `app.css`
+- **🌗 Dark Mode** - Light and dark themes with a header toggle, remembered in a cookie and server-rendered with no flash
+- **🧩 Layouts** - Marketing, auth, app and settings layouts, attached per page and nestable
+- **📊 Dashboard** - An authenticated `/dashboard` route to land on after login or signup
+- **✅ Typed Forms** - The `Form` component types its `errors` from the route's VineJS validator
 - **🔔 Toast Notifications** - Built-in toast system using Vue Sonner
 - **🛡️ Security First** - CSRF protection, Shield middleware, and secure session handling
 - **🔒 Type Safety** - End-to-end TypeScript with Tuyau for type-safe routing
@@ -79,7 +85,7 @@ This starter kit is designed to help you build production-ready single-page appl
   <tr>
     <td><strong>Styling</strong></td>
     <td>
-      Custom CSS with modern features (OKLCH colors, CSS variables)
+      Hand-written CSS built on semantic design tokens, with light and dark themes
     </td>
   </tr>
   <tr>
@@ -107,9 +113,15 @@ This starter kit is designed to help you build production-ready single-page appl
     </td>
   </tr>
   <tr>
+    <td><strong>Icons</strong></td>
+    <td>
+      <a href="https://lucide.dev/guide/packages/lucide-vue-next">Lucide (lucide-vue-next)</a> - Consistent, tree-shakeable icon set
+    </td>
+  </tr>
+  <tr>
     <td><strong>Testing</strong></td>
     <td>
-      <a href="https://japa.dev">Japa</a> - Delightful testing framework with browser testing support
+      <a href="https://japa.dev">Japa</a> - Delightful testing framework
     </td>
   </tr>
   <tr>
@@ -325,7 +337,7 @@ Traditional SPAs require building and maintaining a separate API. Inertia.js eli
 
 ## 🤝 Contributing
 
-This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/inertia-starter-kit/issues) or submit a pull request!
+This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/starter-kits/issues) or submit a pull request!
 
 ---
 

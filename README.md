@@ -79,7 +79,7 @@ Build server-rendered applications with Edge.js templating and progressive enhan
 npm init adonisjs@latest -- -K=hypermedia
 ```
 
-**Includes:** Edge.js templating, Alpine.js, Custom CSS design system, Session authentication
+**Includes:** Edge.js templating, Alpine.js, Custom CSS design system with dark mode, Lucide icons, Session authentication
 
 [Learn more about Hypermedia →](./hypermedia)
 
@@ -93,7 +93,7 @@ Build modern single-page applications with React while keeping the simplicity of
 npm init adonisjs@latest -- -K=react
 ```
 
-**Includes:** React 19, Inertia.js, Tuyau (type-safe routing), Sonner (toast notifications)
+**Includes:** React 19, Inertia.js, Tuyau (type-safe routing and forms), Custom CSS design system with dark mode, Lucide icons, Sonner (toast notifications)
 
 [Learn more about Inertia React →](./inertia-react)
 
@@ -107,7 +107,7 @@ Build modern single-page applications with Vue while keeping the simplicity of s
 npm init adonisjs@latest -- -K=vue
 ```
 
-**Includes:** Vue 3, Inertia.js, Tuyau (type-safe routing), Vue Sonner (toast notifications)
+**Includes:** Vue 3, Inertia.js, Tuyau (type-safe routing and forms), Custom CSS design system with dark mode, Lucide icons, Vue Sonner (toast notifications)
 
 [Learn more about Inertia Vue →](./inertia-vue)
 
@@ -162,7 +162,11 @@ All starter kits include:
 - **Form Validation** - VineJS with automatic error handling
 - **Security** - CSRF protection, Shield middleware, secure sessions
 - **TypeScript** - Full TypeScript support with strict mode
-- **Testing** - Japa testing framework with browser testing support
+- **Testing** - Japa testing framework
+
+The web kits (Hypermedia, Inertia React, Inertia Vue) also include:
+
+- **Design System** - Hand-written CSS with light and dark themes, and marketing, auth, app and settings layouts
 - **Vite** - Lightning-fast HMR and optimized production builds
 
 ---
