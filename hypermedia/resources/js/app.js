@@ -27,7 +27,7 @@ Alpine.data('themeToggle', function () {
       const next = this.theme === 'dark' ? 'light' : 'dark'
       this.theme = next
       document.documentElement.setAttribute('data-theme', next)
-      document.cookie = `kit_theme=${next}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
+      document.cookie = `app_theme=${next}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
     },
   }
 })
