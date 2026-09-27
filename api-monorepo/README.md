@@ -32,6 +32,9 @@ npm install
 
 # Run all workspace development scripts
 npm run dev
+
+# Regenerate the backend's Tuyau types without starting the server
+npm run codegen
 ```
 
 ---

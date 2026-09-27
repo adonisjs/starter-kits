@@ -90,21 +90,24 @@ This starter kit is designed to help you build production-ready APIs with Adonis
 
 ## 🚀 Quick Start
 
-### From the Project Root
+### Create a New Project
 
 ```bash
-# Install dependencies
-npm install
+npm init adonisjs@latest -- -K=api
+```
 
-# Copy environment variables
-cp .env.example .env
+This command will:
 
-# Generate application key
-node ace generate:key
+- Clone this starter kit
+- Install all dependencies
+- Set up your `.env` file
+- Generate your app encryption key
+- Configure your database
+- Run migrations
 
-# Run database migrations
-node ace migration:run
+### Start Developing
 
+```bash
 # Run the development server with hot reload
 npm run dev
 ```
@@ -206,7 +209,7 @@ You can easily switch between strategies by changing the guard in your middlewar
 
 ## 🤝 Contributing
 
-This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/api-starter-kit/issues) or submit a pull request!
+This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/starter-kits/issues) or submit a pull request!
 
 ---
 

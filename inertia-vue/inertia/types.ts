@@ -1,9 +1,10 @@
-import { type Data } from '@generated/data'
+import type { Data } from '@generated/data'
 
 /**
- * Bridges the server side types into the Inertia client. "usePage().props" is
- * typed from the Inertia middleware share method and "usePage().flash" from
- * its flash method.
+ * Bridge the shared props and flash data inferred from the Inertia
+ * middleware into the Inertia client, so `usePage().props`, `usePage().flash`,
+ * and layout callbacks are typed globally without passing a generic at each
+ * call site.
  */
 declare module '@inertiajs/core' {
   interface InertiaConfig {

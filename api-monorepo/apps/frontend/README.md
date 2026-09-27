@@ -352,6 +352,8 @@ NUXT_PUBLIC_API_URL=http://localhost:3333
    - Generate Tuyau types in `.adonisjs/client/`
    - Watch for changes and regenerate types automatically
 
+   To regenerate the types without starting the server (for example in CI, before type checking the frontend), run `npm run codegen` from the root of the monorepo.
+
 3. **Your frontend will:**
    - Have access to latest types
    - Get autocomplete and type safety

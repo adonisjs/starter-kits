@@ -1,7 +1,10 @@
 <div align="center">
 
   <!-- Add your cover image here -->
-  <img src="https://github.com/adonisjs/.github/blob/next/docs/hypermedia-adonisjs.png?raw=true" alt="AdonisJS Hypermedia Starter Kit" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/adonisjs/starter-kits/blob/main/docs/hypermedia-dark.png?raw=true">
+    <img src="https://github.com/adonisjs/starter-kits/blob/main/docs/hypermedia-light.png?raw=true" alt="AdonisJS Hypermedia Starter Kit" width="100%">
+  </picture>
 
   <h1>Hypermedia Starter Kit</h1>
 
@@ -37,7 +40,10 @@ This starter kit is designed to help you build production-ready web applications
 - **🔐 Authentication System** - Complete user signup, login, and session management out of the box
 - **📝 Pre-built UI Components** - Form inputs, buttons, alerts, avatars, and more ready to use
 - **⚡️ Server-Side Rendering** - Fast initial page loads with Edge.js templating
-- **🎨 Custom Design System** - Beautiful, accessible components with CSS variables (no framework bloat)
+- **🎨 Custom Design System** - Hand-written CSS built on semantic design tokens, re-themed from one place in `app.css` (no framework bloat)
+- **🌗 Dark Mode** - Light and dark themes with a header toggle, remembered in a cookie and server-rendered with no flash
+- **🧩 Layouts** - Marketing, auth, app and settings layouts under `resources/views/components/layouts`
+- **📊 Dashboard** - An authenticated `/dashboard` route to land on after login or signup
 - **✅ Form Validation** - Powered by VineJS with automatic error handling
 - **🌊 Flash Messages** - Success/error notifications built-in
 - **🛡️ Security First** - CSRF protection, Shield middleware, and secure session handling
@@ -76,9 +82,15 @@ This starter kit is designed to help you build production-ready web applications
     </td>
   </tr>
   <tr>
+    <td><strong>Icons</strong></td>
+    <td>
+      <a href="https://github.com/edge-js/edge-iconify">Lucide via edge-iconify</a> - Inline SVG icons with the <code>@svg('lucide:…')</code> tag
+    </td>
+  </tr>
+  <tr>
     <td><strong>Styling</strong></td>
     <td>
-      Custom CSS with modern features (CSS variables, nesting support via Vite)
+      Hand-written CSS built on semantic design tokens, with light and dark themes
     </td>
   </tr>
   <tr>
@@ -136,6 +148,12 @@ node ace serve --hmr
 # Run tests
 node ace test
 
+# Type check your code
+npm run typecheck
+
+# Lint your code
+npm run lint
+
 # Build for production
 npm run build
 
@@ -144,6 +162,85 @@ npm start
 ```
 
 Your app will be running at `http://localhost:3333`
+
+---
+
+## 🧱 Adding Pages
+
+The kit ships the building blocks for app pages, without shipping pages you would have to delete.
+
+| Piece                                              | What it does                                                                                   |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `resources/views/components/page.edge`             | Renders the page heading, description and actions.                                             |
+| `resources/views/components/section.edge`          | A group of content within a page, with an optional title. Stacked sections get a divider.      |
+| `resources/views/components/layouts/settings.edge` | The settings area: a heading, a sidebar of links and a card holding the current settings page. |
+| `nav` in `components/layouts/app.edge`             | The top-level navigation. Add an entry for every new area of your app.                         |
+
+### A single page
+
+Render the page inside the app layout and wrap its content in `@page`. The document title is set on the layout. Leave out the `@page` title when the page should not render a heading. Buttons or links for the page header go in the `actions` slot.
+
+```edge
+{{-- resources/views/pages/reports.edge --}}
+@layouts.app({ title: 'Reports' })
+  @page({ title: 'Reports', description: 'Monthly numbers at a glance.' })
+    @slot('actions')
+      @link({ route: 'reports.export', class: 'btn btn--secondary btn--sm' })
+        Export
+      @end
+    @end
+    …
+  @end
+@end
+```
+
+Register a route for it and add an entry to `nav` in `resources/views/components/layouts/app.edge` to link to it.
+
+To show content on a card, wrap it in `<div class="panel">`. The settings layout uses the same class for its content card.
+
+### Settings pages
+
+The settings layout is ready, it only needs pages. Start with a route group.
+
+```ts
+// start/routes.ts
+router
+  .group(() => {
+    router.on('/').render('pages/settings/profile').as('profile')
+    router.on('/security').render('pages/settings/security').as('security')
+  })
+  .prefix('/settings')
+  .as('settings')
+  .use(middleware.auth())
+```
+
+List the pages in `items` inside `resources/views/components/layouts/settings.edge`. The sidebar highlights the current one.
+
+```edge
+@let(items = [
+  { label: 'Profile', route: 'settings.profile', icon: 'lucide:user' },
+  { label: 'Security', route: 'settings.security', icon: 'lucide:shield' },
+])
+```
+
+Each page renders inside the settings layout, which renders the app layout for you.
+
+```edge
+{{-- resources/views/pages/settings/profile.edge --}}
+@layouts.settings({ title: 'Profile' })
+  @section({ title: 'Profile', description: 'This is how others will see you.' })
+    @field.root({ name: 'username' })
+      @!field.label({ text: 'Username' })
+      @!input.control()
+      <p class="field__hint">This is your public display name.</p>
+    @end
+  @end
+@end
+```
+
+Finally, add `{ label: 'Settings', route: 'settings.profile', icon: 'lucide:settings' }` to `nav` in the app layout. It stays active on every page under `/settings`.
+
+Need another area with a sidebar, like reports or admin? Copy `layouts/settings.edge`, change its heading and items. The `sidebar-layout` styles are shared.
 
 ---
 
@@ -192,7 +289,7 @@ This starter kit embraces the **hypermedia-driven** approach to web development:
 
 ## 🤝 Contributing
 
-This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/web-starter-kit/issues) or submit a pull request!
+This starter kit is maintained by the AdonisJS team. Found a bug or have a suggestion? [Open an issue](https://github.com/adonisjs/starter-kits/issues) or submit a pull request!
 
 ---
 

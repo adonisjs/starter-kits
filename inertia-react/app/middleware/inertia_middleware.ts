@@ -13,7 +13,13 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
      * In that case, we must always assume that HttpContext is not fully hydrated
      * with all the properties
      */
-    const { auth } = ctx as Partial<HttpContext>
+    const { auth, request } = ctx as Partial<HttpContext>
+
+    const theme: 'light' | 'dark' =
+      request?.plainCookie('app_theme', {
+        defaultValue: 'light',
+        encoded: false,
+      }) ?? 'light'
 
     /**
      * Data shared with all Inertia pages. Make sure you are using
@@ -22,26 +28,22 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
     return {
       errors: ctx.inertia.always(this.getValidationErrors(ctx)),
       user: ctx.inertia.always(auth?.user ? UserTransformer.transform(auth.user) : undefined),
+      preferences: ctx.inertia.always({ theme }),
     }
   }
 
-  /**
-   * The flash bag is sent to every Inertia page as a top-level "flash" field
-   * (a sibling of "props") and is read on the client using "usePage().flash".
-   *
-   * Just like the share method, the flash method may run before the session
-   * middleware, so HttpContext must be treated as partially hydrated.
-   */
   flash(ctx: HttpContext) {
+    /**
+     * Flash messages travel in the dedicated `flash` field of the page
+     * object instead of props, and the client strips them from history
+     * state so they never reappear when navigating back.
+     */
     const { session } = ctx as Partial<HttpContext>
 
-    /**
-     * Fetching the first error from the flash messages
-     */
-    return {
-      error: session?.flashMessages.get('error') as string | undefined,
-      success: session?.flashMessages.get('success') as string | undefined,
-    }
+    const success: string | undefined = session?.flashMessages.get('success')
+    const error: string | undefined = session?.flashMessages.get('error')
+
+    return { success, error }
   }
 
   async handle(ctx: HttpContext, next: NextFn) {

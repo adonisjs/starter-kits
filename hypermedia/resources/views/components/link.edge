@@ -5,13 +5,11 @@
   : $props.get('route')
     ? urlFor($props.get('route'), $props.get('routeParams'), $props.get('routeOptions'))
     : undefined)
-@let(activeClass = request.url() === linkHref ? 'current' : '')
-@let(classes = [activeClass])
 
 <a {{
   $props
     .except(['href', 'text', 'route', 'routeParams', 'routeOptions'])
-    .merge({ href: linkHref, class: classes })
+    .merge({ href: linkHref })
     .toAttrs()
 }}>
   {{{ linkText }}}

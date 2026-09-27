@@ -1,7 +1,6 @@
 import './css/app.css'
 import 'vue-sonner/style.css'
 import { client } from '~/client'
-import Layout from '~/layouts/default.vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { TuyauProvider } from '@adonisjs/inertia/vue'
 import { createApp, type DefineComponent, h } from 'vue'
@@ -14,8 +13,7 @@ createInertiaApp({
   resolve: (name) => {
     return resolvePageComponent(
       `./pages/${name}.vue`,
-      import.meta.glob<DefineComponent>('./pages/**/*.vue'),
-      Layout
+      import.meta.glob<DefineComponent>('./pages/**/*.vue')
     )
   },
   setup({ el, App, props, plugin }) {

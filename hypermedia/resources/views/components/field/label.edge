@@ -1,6 +1,6 @@
 @let(labelTextFromSlot = await $slots.main())
 @let(labelText = labelTextFromSlot.trim() ? labelTextFromSlot : $props.get('text'))
-@let(classes = [])
+@let(classes = ['field__label'])
 
 <label {{
   $props

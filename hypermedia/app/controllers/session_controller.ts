@@ -1,4 +1,5 @@
 import User from '#models/user'
+import { loginValidator } from '#validators/user'
 import type { HttpContext } from '@adonisjs/core/http'
 
 /**
@@ -18,11 +19,11 @@ export default class SessionController {
    * Authenticate user credentials and create a new session
    */
   async store({ request, auth, response }: HttpContext) {
-    const { email, password } = request.all()
+    const { email, password } = await request.validateUsing(loginValidator)
     const user = await User.verifyCredentials(email, password)
 
     await auth.use('web').login(user)
-    response.redirect().toRoute('home')
+    response.redirect().toRoute('dashboard')
   }
 
   /**
