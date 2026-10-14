@@ -7,7 +7,7 @@ export default function Signup() {
       <h1 className="auth__title">Create your account</h1>
       <p className="auth__sub">Start building with the starter kit.</p>
 
-      <Form route="new_account.store">
+      <Form route="auth.register">
         {({ errors, processing }) => (
           <div className="auth__form">
             <div className="field">
@@ -90,7 +90,7 @@ export default function Signup() {
 
       <p className="auth__foot">
         Already have an account?{' '}
-        <Link route="session.create" className="il">
+        <Link route="auth.login_page" className="il">
           Sign in
         </Link>
       </p>

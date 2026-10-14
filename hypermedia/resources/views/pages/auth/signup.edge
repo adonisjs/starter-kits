@@ -2,7 +2,7 @@
   <h1 class="auth__title">Create your account</h1>
   <p class="auth__sub">Start building with the starter kit.</p>
   @form({
-    route: 'new_account.store',
+    route: 'auth.register',
     method: 'POST',
     class: 'auth__form',
     'x-data': '{ submitting: false }',
@@ -54,7 +54,7 @@
     
     Already have an account?
 
-    @link({ route: 'session.create', class: 'il' })
+    @link({ route: 'auth.login_page', class: 'il' })
       Sign in
     @end
   </p>

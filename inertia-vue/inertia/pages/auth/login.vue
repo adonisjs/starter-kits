@@ -8,7 +8,7 @@ import { Form, Link } from '@adonisjs/inertia/vue'
     <h1 class="auth__title">Welcome back</h1>
     <p class="auth__sub">Sign in to continue building.</p>
 
-    <Form v-slot="{ processing, errors }" route="session.store">
+    <Form v-slot="{ processing, errors }" route="auth.login">
       <div class="auth__form">
         <div class="field">
           <label class="field__label" for="email">Email</label>
@@ -51,7 +51,7 @@ import { Form, Link } from '@adonisjs/inertia/vue'
 
     <p class="auth__foot">
       New here?
-      <Link route="new_account.create" class="il">Create an account</Link>
+      <Link route="auth.register_page" class="il">Create an account</Link>
     </p>
   </AuthLayout>
 </template>

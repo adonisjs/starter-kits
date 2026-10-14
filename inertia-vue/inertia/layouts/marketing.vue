@@ -18,8 +18,8 @@ const page = usePage()
           <Link route="dashboard" class="btn btn--primary btn--sm">Dashboard</Link>
         </template>
         <template v-else>
-          <Link route="session.create" class="btn btn--ghost btn--sm">Sign in</Link>
-          <Link route="new_account.create" class="btn btn--primary btn--sm">Get started</Link>
+          <Link route="auth.login_page" class="btn btn--ghost btn--sm">Sign in</Link>
+          <Link route="auth.register_page" class="btn btn--primary btn--sm">Get started</Link>
         </template>
       </div>
     </div>

@@ -7,7 +7,7 @@ export default function Login() {
       <h1 className="auth__title">Welcome back</h1>
       <p className="auth__sub">Sign in to continue building.</p>
 
-      <Form route="session.store">
+      <Form route="auth.login">
         {({ errors, processing }) => (
           <div className="auth__form">
             <div className="field">
@@ -56,7 +56,7 @@ export default function Login() {
 
       <p className="auth__foot">
         New here?{' '}
-        <Link route="new_account.create" className="il">
+        <Link route="auth.register_page" className="il">
           Create an account
         </Link>
       </p>

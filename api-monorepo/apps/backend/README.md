@@ -145,10 +145,10 @@ Your API will be running at `http://localhost:3333`
 
 ### Available Endpoints
 
-- `POST /api/v1/auth/signup` - Create a new account
+- `POST /api/v1/auth/register` - Create a new account
 - `POST /api/v1/auth/login` - Login and get access token
 - `POST /api/v1/auth/logout` - Logout (requires authentication)
-- `GET /api/v1/account/profile` - Get current user profile (requires authentication)
+- `GET /api/v1/auth/user` - Get current user profile (requires authentication)
 
 ---
 

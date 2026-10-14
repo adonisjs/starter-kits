@@ -2,7 +2,7 @@
   <h1 class="auth__title">Welcome back</h1>
   <p class="auth__sub">Sign in to continue building.</p>
   @form({
-    route: 'session.store',
+    route: 'auth.login',
     method: 'POST',
     class: 'auth__form',
     'x-data': '{ submitting: false }',
@@ -42,7 +42,7 @@
     New here?
 
 
-    @link({ route: 'new_account.create', class: 'il' })
+    @link({ route: 'auth.register_page', class: 'il' })
       Create an account
     @end
   </p>

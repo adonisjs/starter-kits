@@ -20,7 +20,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <Logo size={28} />
           <div className="header__right">
             <ThemeToggle />
-            <Form route="session.destroy">
+            <Form route="auth.logout">
               <button type="submit" className="btn btn--secondary btn--sm">
                 <LogOut size={15} /> Log out
               </button>

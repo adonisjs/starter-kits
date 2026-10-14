@@ -19,7 +19,7 @@ const nav: NavItem[] = [{ label: 'Dashboard', route: 'dashboard', icon: House }]
       <Logo :size="28" />
       <div class="header__right">
         <ThemeToggle />
-        <Form route="session.destroy">
+        <Form route="auth.logout">
           <button type="submit" class="btn btn--secondary btn--sm">
             <LogOut :size="15" /> Log out
           </button>

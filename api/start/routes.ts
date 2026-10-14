@@ -19,19 +19,17 @@ router
   .group(() => {
     router
       .group(() => {
-        router.post('signup', [controllers.NewAccount, 'store'])
-        router.post('login', [controllers.AccessTokens, 'store'])
+        router.post('login', [controllers.Auth, 'login']).as('login')
+        router.post('register', [controllers.Auth, 'register']).as('register')
+
+        router
+          .group(() => {
+            router.post('logout', [controllers.Auth, 'logout']).as('logout')
+            router.get('user', [controllers.Auth, 'user']).as('user')
+          })
+          .use(middleware.auth())
       })
       .prefix('auth')
       .as('auth')
-
-    router
-      .group(() => {
-        router.get('profile', [controllers.Profile, 'show'])
-        router.post('logout', [controllers.AccessTokens, 'destroy'])
-      })
-      .prefix('account')
-      .as('profile')
-      .use(middleware.auth())
   })
   .prefix('/api/v1')
