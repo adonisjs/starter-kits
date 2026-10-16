@@ -53,6 +53,10 @@ const dbConfig = defineConfig({
     //     naturalSort: true,
     //     paths: ['database/migrations'],
     //   },
+    //   schemaGeneration: {
+    //     enabled: true,
+    //     rulesPaths: ['./database/schema_rules.js'],
+    //   },
     //   debug: app.inDev,
     // },
 
@@ -72,6 +76,10 @@ const dbConfig = defineConfig({
     //   migrations: {
     //     naturalSort: true,
     //     paths: ['database/migrations'],
+    //   },
+    //   schemaGeneration: {
+    //     enabled: true,
+    //     rulesPaths: ['./database/schema_rules.js'],
     //   },
     //   debug: app.inDev,
     // },
@@ -93,6 +101,10 @@ const dbConfig = defineConfig({
     //     naturalSort: true,
     //     paths: ['database/migrations'],
     //   },
+    //   schemaGeneration: {
+    //     enabled: true,
+    //     rulesPaths: ['./database/schema_rules.js'],
+    //   },
     //   debug: app.inDev,
     // },
 
@@ -110,6 +122,10 @@ const dbConfig = defineConfig({
     //   migrations: {
     //     naturalSort: true,
     //     paths: ['database/migrations'],
+    //   },
+    //   schemaGeneration: {
+    //     enabled: true,
+    //     rulesPaths: ['./database/schema_rules.js'],
     //   },
     //   debug: app.inDev,
     // },
