@@ -21,7 +21,7 @@
         @!logo({ size: 28 })
         <div class="header__right">
           @!themeToggle()
-          @if(auth.user)
+          @if(auth?.user)
             @link({ route: 'dashboard', class: 'btn btn--primary btn--sm' })
               Dashboard
             @end
