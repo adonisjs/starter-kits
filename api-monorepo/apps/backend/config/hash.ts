@@ -1,3 +1,4 @@
+import app from '@adonisjs/core/services/app'
 import { defineConfig, drivers } from '@adonisjs/core/hash'
 
 /**
@@ -27,8 +28,11 @@ const hashConfig = defineConfig({
        * - Keep values practical for your slowest production machine.
        *
        * Node constraint: value must be a power of two greater than 1.
+       *
+       * Tests use a lower cost to run faster, since their hashes never
+       * need to resist brute-force attacks.
        */
-      cost: 16384,
+      cost: app.inTest ? 1024 : 16384,
 
       /**
        * Block size (Node alias: r / blockSize).
