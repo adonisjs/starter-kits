@@ -1,3 +1,7 @@
 .adonisjs
 node_modules
 build
+database/schema.ts
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
