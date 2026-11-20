@@ -1,6 +1,6 @@
 @let(useOldValue = !['password', 'file', 'checkbox', 'radio'].includes($props.get('type')))
 @let(inputValue = useOldValue
-  ? $context.oldValue || $props.get('value') || ''
+  ? $context.oldValue === undefined ? $props.get('value') ?? '' : $context.oldValue ?? ''
   : $props.get('value') || '')
 @let(classes = ['field__input'])
 

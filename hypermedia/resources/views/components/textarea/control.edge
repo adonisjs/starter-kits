@@ -12,4 +12,4 @@
       'aria-describedby': $context.hasErrors ? `${$context.id}-error` : '',
     })
     .toAttrs()
-}}>{{{ $context.oldValue || $props.get('value') || '' }}}</textarea>
+}}>{{{ $context.oldValue === undefined ? $props.get('value') ?? '' : $context.oldValue ?? '' }}}</textarea>
