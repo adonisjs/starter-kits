@@ -4,13 +4,7 @@ import { Form } from '@adonisjs/inertia/vue'
 import Logo from '~/components/logo.vue'
 import FlashToasts from '~/components/flash_toasts.vue'
 import ThemeToggle from '~/components/theme_toggle.vue'
-import NavLink, { type NavItem } from '~/components/nav_link.vue'
-
-/**
- * Top-level app navigation. Add an entry here for every new area of your
- * app, and it shows up in the navigation bar with its active state handled.
- */
-const nav: NavItem[] = [{ label: 'Dashboard', route: 'dashboard', icon: House }]
+import NavLink from '~/components/nav_link.vue'
 </script>
 
 <template>
@@ -30,9 +24,13 @@ const nav: NavItem[] = [{ label: 'Dashboard', route: 'dashboard', icon: House }]
 
   <nav class="subnav">
     <div class="subnav__inner">
-      <NavLink v-for="item in nav" :key="item.label" :route="item.route" class="subnav__item">
-        <component :is="item.icon" v-if="item.icon" :size="14" />
-        {{ item.label }}
+      <!--
+        Top-level app navigation. Add a NavLink here for every new area of
+        your app. It marks itself active on the current page.
+      -->
+      <NavLink route="dashboard" class="subnav__item">
+        <House :size="14" />
+        Dashboard
       </NavLink>
     </div>
   </nav>
