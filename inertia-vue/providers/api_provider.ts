@@ -29,7 +29,12 @@ class ApiSerializer extends BaseSerializer<{
         'Invalid pagination metadata. Expected metadata to contain Lucid pagination keys'
       )
     }
-    return metaData
+
+    /**
+     * The type guard of `@adonisjs/http-transformers` does not list
+     * `pageName`, which Lucid 22.5 added, so the value is cast.
+     */
+    return metaData as SimplePaginatorMetaKeys
   }
 }
 
