@@ -67,7 +67,7 @@
     "@adonisjs/lucid": "^22.4.2",
     "@adonisjs/session": "^8.1.0",
     "@adonisjs/shield": "^9.0.0",
-    "@adonisjs/static": "^2.0.1",
+    "@adonisjs/static": "^2.0.2",
     "@adonisjs/vite": "^6.0.2",
     "@inertiajs/core": "^3.7.1",
     "@inertiajs/vue3": "^3.7.1",

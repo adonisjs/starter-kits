@@ -14,6 +14,13 @@ const staticServerConfig = defineConfig({
   enabled: true,
 
   /**
+   * URL paths to look up in the "public" directory. Any other request
+   * skips the filesystem and goes to your routes. Add the path of each
+   * file or folder that you put in the "public" directory.
+   */
+  prefixes: ['/assets', '/favicon.ico', '/robots.txt'],
+
+  /**
    * Enable ETag headers for static files.
    * ETags help browsers cache files efficiently by comparing
    * file versions without re-downloading unchanged files.
