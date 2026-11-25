@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { House, LogOut } from 'lucide-vue-next'
+import { House, LogOut } from '@lucide/vue'
 import { Form } from '@adonisjs/inertia/vue'
 import Logo from '~/components/logo.vue'
 import FlashToasts from '~/components/flash_toasts.vue'
