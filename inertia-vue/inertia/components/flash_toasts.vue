@@ -2,7 +2,7 @@
 import { watch } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import { toast, Toaster } from 'vue-sonner'
-import { CircleAlert, CircleCheck } from 'lucide-vue-next'
+import { CircleAlert, CircleCheck } from '@lucide/vue'
 
 const page = usePage()
 
