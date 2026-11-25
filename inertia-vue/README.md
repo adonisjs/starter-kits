@@ -115,7 +115,7 @@ This starter kit is designed to help you build production-ready single-page appl
   <tr>
     <td><strong>Icons</strong></td>
     <td>
-      <a href="https://lucide.dev/guide/packages/lucide-vue-next">Lucide (lucide-vue-next)</a> - Consistent, tree-shakeable icon set
+      <a href="https://lucide.dev/guide/vue">Lucide (@lucide/vue)</a> - Consistent, tree-shakeable icon set
     </td>
   </tr>
   <tr>

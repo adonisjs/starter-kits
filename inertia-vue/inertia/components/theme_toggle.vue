@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { usePage } from '@inertiajs/vue3'
-import { Moon, Sun } from 'lucide-vue-next'
+import { Moon, Sun } from '@lucide/vue'
 
 const COOKIE = 'app_theme'
 const ONE_YEAR = 60 * 60 * 24 * 365
