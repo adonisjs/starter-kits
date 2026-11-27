@@ -61,8 +61,10 @@
   },
   "dependencies": {
     "@adonisjs/auth": "^10.1.1",
+    "@adonisjs/bodyparser": "^11.1.0",
     "@adonisjs/core": "^7.7.0",
     "@adonisjs/cors": "^3.0.1",
+    "@adonisjs/http-server": "^9.4.0",
     "@adonisjs/inertia": "^5.0.6",
     "@adonisjs/lucid": "^22.5.0",
     "@adonisjs/session": "^8.4.0",
