@@ -5,7 +5,7 @@ const bodyParserConfig = defineConfig({
    * Parse request bodies for these HTTP methods.
    * Keep this aligned with methods that receive payloads in your routes.
    */
-  allowedMethods: ['POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedMethods: ['POST', 'PUT', 'PATCH', 'DELETE', 'QUERY'],
 
   /**
    * Config for the "application/x-www-form-urlencoded"
