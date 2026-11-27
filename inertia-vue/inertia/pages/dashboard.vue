@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LayoutGrid } from 'lucide-vue-next'
+import { LayoutGrid } from '@lucide/vue'
 import Page from '~/components/page.vue'
 import AppLayout from '~/layouts/app.vue'
 
