@@ -1,6 +1,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { BaseSerializer } from '@adonisjs/core/transformers'
-import { type SimplePaginatorMetaKeys } from '@adonisjs/lucid/types/querybuilder'
+import { type LucidPaginatorMetaData } from '@adonisjs/core/types/transformers'
 
 /**
  * Custom serializer for API responses that ensures consistent JSON structure
@@ -9,7 +9,7 @@ import { type SimplePaginatorMetaKeys } from '@adonisjs/lucid/types/querybuilder
  */
 class ApiSerializer extends BaseSerializer<{
   Wrap: 'data'
-  PaginationMetaData: SimplePaginatorMetaKeys
+  PaginationMetaData: LucidPaginatorMetaData
 }> {
   /**
    * Wraps all serialized data under this key in the response object.
@@ -23,18 +23,14 @@ class ApiSerializer extends BaseSerializer<{
    *
    * @throws Error if metadata doesn't match Lucid's pagination structure
    */
-  definePaginationMetaData(metaData: unknown): SimplePaginatorMetaKeys {
+  definePaginationMetaData(metaData: unknown): LucidPaginatorMetaData {
     if (!this.isLucidPaginatorMetaData(metaData)) {
       throw new Error(
         'Invalid pagination metadata. Expected metadata to contain Lucid pagination keys'
       )
     }
 
-    /**
-     * The type guard of `@adonisjs/http-transformers` does not list
-     * `pageName`, which Lucid 22.5 added, so the value is cast.
-     */
-    return metaData as SimplePaginatorMetaKeys
+    return metaData
   }
 }
 
